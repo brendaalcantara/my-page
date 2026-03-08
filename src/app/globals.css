@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #0a0a0f;
+  --color-foreground: #e2e8f0;
+  --color-neon-blue: #00d4ff;
+  --color-neon-purple: #a855f7;
+  --color-neon-pink: #ec4899;
+  --color-neon-green: #22d3ee;
+  --color-dark-800: #1a1a2e;
+  --color-dark-700: #16213e;
+  --color-dark-600: #1e293b;
+  --color-dark-500: #334155;
+  --color-card-bg: rgba(26, 26, 46, 0.6);
+  --color-card-border: rgba(0, 212, 255, 0.15);
+  --font-display: "Orbitron", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Inter", sans-serif;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-neon-blue) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-neon-blue);
+  border-radius: 3px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(168, 85, 247, 0.4);
+  color: #fff;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: var(--color-neon-blue); }
+}
+
+@keyframes xp-fill {
+  from { width: 0%; }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.neon-text-blue {
+  text-shadow: 0 0 7px var(--color-neon-blue), 0 0 10px var(--color-neon-blue),
+    0 0 21px var(--color-neon-blue);
+}
+
+.neon-text-purple {
+  text-shadow: 0 0 7px var(--color-neon-purple), 0 0 10px var(--color-neon-purple),
+    0 0 21px var(--color-neon-purple);
+}
+
+.neon-border {
+  box-shadow: 0 0 5px var(--color-neon-blue), inset 0 0 5px rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.neon-border-purple {
+  box-shadow: 0 0 5px var(--color-neon-purple), inset 0 0 5px rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.glass-card {
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 212, 255, 0.12);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-neon-blue), var(--color-neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.achievement-unlock {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(168, 85, 247, 0.1));
+  border-left: 3px solid var(--color-neon-purple);
+}
+
+.terminal-screen {
+  background: rgba(0, 10, 15, 0.95);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  font-family: var(--font-mono);
+}
+
+.konami-flash {
+  animation: konami-bg 0.5s ease-in-out;
+}
+
+@keyframes konami-bg {
+  0% { background: transparent; }
+  50% { background: rgba(168, 85, 247, 0.3); }
+  100% { background: transparent; }
+}

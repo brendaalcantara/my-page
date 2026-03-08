@@ -1,0 +1,207 @@
+{
+  "nav": {
+    "journey": "Trayectoria",
+    "skills": "Skills",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "stats": "Stats",
+    "contact": "Contacto",
+    "devMode": "Dev Mode"
+  },
+  "hero": {
+    "headline": "Brenda Bispo // Backend Software Developer",
+    "subheadline": "Ayudando a construir sistemas resilientes y escalables que impactan a millones de usuarios diariamente.",
+    "highlight": "Formo parte del equipo de ingeniería de Mercado Libre, actuando en Full Super — el supermercado de Mercado Libre — donde enfrento los desafíos de un ecosistema distribuido por toda América Latina. Me apasiona mi profesión porque sé que, con lo que construimos, logro impactar el día a día de personas reales.",
+    "intro": "Mi base viene de Itagimirim, en el interior de Bahía, Brasil, pero mi código llega a toda América Latina. Foco en backend con Java, pero sin miedo a nuevos lenguajes — también codifico en Kotlin, Go, JavaScript y TypeScript. Desarrollo microservicios de alta performance, colaborando diariamente con personas de culturas diversas en Argentina, Colombia, Uruguay y Chile.",
+    "viewProjects": "Ver Proyectos",
+    "playJourney": "Jugar Mi Trayectoria Dev"
+  },
+  "journey": {
+    "title": "Trayectoria de la Desarrolladora",
+    "levels": [
+      {
+        "level": 1,
+        "title": "Raíces",
+        "description": "Nacida y criada en Itagimirim, Bahía — una pequeña ciudad que forjó mi determinación y la curiosidad incansable de ir más allá."
+      },
+      {
+        "level": 2,
+        "title": "Instituto Federal de Bahía",
+        "description": "Completé la secundaria en el IFBA, fortaleciendo mi base académica y despertando la curiosidad por la ciencia y la tecnología."
+      },
+      {
+        "level": 3,
+        "title": "Universidad & Ciencias de la Salud",
+        "description": "Me mudé a otra ciudad para estudiar Ciencias de la Salud y parte de Biomedicina en la UFSB. Una etapa de maduración personal e intelectual."
+      },
+      {
+        "level": 4,
+        "title": "Primer Proyecto Tech",
+        "description": "En la universidad, creé \"Patógenos Bioecológicos\" — un juego educativo sobre patógenos biológicos usando programación en bloques que generaba Kotlin internamente. Mi primer contacto con el código."
+      },
+      {
+        "level": 5,
+        "title": "Transición a Tecnología",
+        "description": "La pasión por resolver problemas con código habló más fuerte. Decidí migrar a ingeniería de software y nunca miré atrás."
+      },
+      {
+        "level": 6,
+        "title": "Bootcamp Mercado Libre",
+        "description": "Entré al ecosistema de Mercado Libre por el bootcamp, sumergiéndome en la ingeniería de software a escala. El inicio de mi carrera profesional."
+      },
+      {
+        "level": 7,
+        "title": "Ingeniera Backend",
+        "description": "Me convertí en Backend Software Developer, profundizando mi conocimiento en sistemas distribuidos, microservicios y el ecosistema Meli."
+      },
+      {
+        "level": 8,
+        "title": "Equipo Supermercado",
+        "description": "Actuando en el equipo de Supermercado de Mercado Libre — entendiendo el negocio, participando de rotaciones on-call y evolucionando la plataforma diariamente."
+      },
+      {
+        "level": 9,
+        "title": "Proyectos con Propósito",
+        "description": "Creando aplicaciones que van más allá del código: AntiBet Alerta, para combatir la adicción a apuestas; Liv+, para auxiliar pacientes de enfermedades crónicas reumatológicas en el día a día del tratamiento — y más por venir."
+      },
+      {
+        "level": 10,
+        "title": "Próximo Capítulo",
+        "description": "El camino continúa. Nuevas tecnologías para dominar, nuevos sistemas para arquitectar, nuevos desafíos para superar. Lo mejor está por venir."
+      }
+    ],
+    "complete": "TRAVESÍA COMPLETA",
+    "badges": "insignias",
+    "forNow": "por ahora...",
+    "gameOver": "GAME OVER",
+    "startTitle": "TRAYECTORIA DE LA DESARROLLADORA",
+    "startSubtitle": "Una aventura por mi camino profesional",
+    "startButton": "Iniciar Trayectoria",
+    "startHint": "Usa ← → para mover, ↑ para saltar, ↓ para bajar",
+    "playAgain": "↺ jugar de nuevo",
+    "tryAgain": "↺ intentar de nuevo",
+    "reset": "↺ reset",
+    "terminalTitle": "developer-journey.exe",
+    "enemies": {
+      "daydream": "TDAH: cabeza en la luna",
+      "doubt": "Dudas sobre el futuro",
+      "saudade": "Nostalgia de la familia",
+      "virus": "Virus y patógenos",
+      "money": "Presión financiera",
+      "bug": "Bugs del ecosistema",
+      "cart": "Caos del supermercado",
+      "alert": "Alertas de producción",
+      "clock": "Carrera contra el tiempo"
+    }
+  },
+  "techStack": {
+    "title": "Habilidades de Ingeniería",
+    "categories": {
+      "backend": "Backend Core",
+      "platform": "Arquitectura & Plataforma",
+      "practices": "Calidad & Operaciones"
+    }
+  },
+  "experience": {
+    "title": "Ingeniera Backend – Mercado Libre (3+ años)",
+    "intro": "Ayudando a construir sistemas resilientes y escalables que impactan a millones de usuarios diariamente.",
+    "achievements": [
+      {
+        "title": "Confiabilidad a Escala",
+        "description": "Rotaciones on-call para garantizar la salud de flujos críticos de usuario en producción."
+      },
+      {
+        "title": "Ingeniería de Performance",
+        "description": "Creación de dashboards y métricas de observabilidad para APIs de alto tráfico (Carrito y Checkout)."
+      },
+      {
+        "title": "Mentoría y Calidad",
+        "description": "Más de 40 PR Reviews enfocados en seguridad, performance y mantenibilidad."
+      },
+      {
+        "title": "Rollouts Seguros",
+        "description": "Activaciones de feature flags, experimentos A/B y pruebas de regresión para deploys sin impacto al usuario."
+      },
+      {
+        "title": "Migraciones de Servicio",
+        "description": "Migración de servicios legacy y construcción de scripts de validación automatizados."
+      },
+      {
+        "title": "Colaboración Multicultural",
+        "description": "Trabajo diario con ingenieros de Argentina, Colombia, Uruguay y Chile en un ambiente distribuido."
+      }
+    ]
+  },
+  "projects": {
+    "title": "Laboratorio Personal",
+    "intro": "Más allá de la escala del trabajo, uso mis proyectos personales para explorar nuevas tecnologías y resolver problemas reales del cotidiano.",
+    "project1": {
+      "title": "Patógenos Bioecológicos",
+      "description": "Un crossover entre educación y tecnología.",
+      "goal": "Enseñar conceptos de patógenos biológicos a través de gameplay interactivo.",
+      "tech": "Desarrollado con Kotlin y lógica de programación en bloques."
+    },
+    "project2": {
+      "title": "AntiBet Alerta",
+      "description": "App Android enfocada en impacto social.",
+      "purpose": "Detectar sitios de apuestas y enviar alertas para ayudar en el combate a la adicción.",
+      "status": "Próximamente"
+    },
+    "project3": {
+      "title": "Liv+",
+      "description": "Salud y tecnología caminando juntas.",
+      "purpose": "Auxiliar a pacientes de enfermedades crónicas reumatológicas en el día a día del tratamiento y, en el futuro, permitir que médicos acompañen la evolución de los pacientes.",
+      "status": "En desarrollo"
+    }
+  },
+  "stats": {
+    "title": "Stats de la Ingeniera",
+    "yearsCoding": "Años Programando",
+    "yearsMeli": "Años en Mercado Libre",
+    "prsCreated": "PRs Creados",
+    "prReviews": "PR Reviews",
+    "repos": "Repositorios",
+    "systemsSupported": "Sistemas para Millones",
+    "onCall": "Rotaciones On-call"
+  },
+  "softSkills": {
+    "title": "Soft Skills",
+    "skills": [
+      "Determinada y resiliente",
+      "Excelente comunicación",
+      "Fuerte colaboración y trabajo en equipo",
+      "Experiencia en equipos multiculturales",
+      "Apasionada por aprender nuevas tecnologías",
+      "Motivada por desafíos complejos",
+      "Mentalidad proactiva"
+    ]
+  },
+  "languages": {
+    "title": "Idiomas",
+    "items": [
+      { "name": "Portugués", "level": "Nativo" },
+      { "name": "Español", "level": "Intermedio" },
+      { "name": "Inglés", "level": "Principiante" }
+    ]
+  },
+  "terminal": {
+    "welcome": "¡Bienvenida al Dev Mode! Escribe 'help' para ver los comandos disponibles.",
+    "prompt": "brenda@portfolio",
+    "commands": {
+      "help": "Comandos disponibles:\n  help      - Muestra este mensaje\n  about     - Sobre mí\n  projects  - Mis proyectos\n  skills    - Mis habilidades\n  contact   - Información de contacto\n  clear     - Limpiar terminal",
+      "about": "Ingeniera Backend en Mercado Libre.\nNatural de Itagimirim, Bahía, Brasil.\n3+ años construyendo sistemas escalables para millones de usuarios.\nColaborando diariamente con equipos distribuidos por América Latina.",
+      "projects": "1. Patógenos Bioecológicos - Juego educativo (Kotlin)\n2. AntiBet Alerta - App Android contra la adicción a apuestas (Kotlin)\n3. Liv+ - App para pacientes de enfermedades crónicas reumatológicas (Kotlin) [en dev]\n\nMás allá del trabajo, uso proyectos personales para explorar nuevas tecnologías.",
+      "skills": "Backend Core: Java (90%) | Kotlin (75%) | Go (50%)\nArquitectura: Spring Boot (85%) | Microservices (80%) | REST APIs (85%)\nCalidad: Observabilidad (70%) | Testing (70%) | Code Review (80%) | Seguridad (60%)",
+      "contact": "LinkedIn: linkedin.com/in/bfrancisco-bispo\nGitHub: github.com/bfrancisco-bispo\nEmail: bfranciscobispo@gmail.com",
+      "unknown": "Comando no reconocido. Escribe 'help' para ver los comandos disponibles."
+    }
+  },
+  "contact": {
+    "title": "Construyamos algo significativo.",
+    "subtitle": "Lista para colaborar en proyectos desafiadores e impactar a millones de usuarios."
+  },
+  "easter": {
+    "konami": "🎮 ¡CÓDIGO KONAMI ACTIVADO! ¡Desbloqueaste el modo secreto!",
+    "achievement": "🏆 ¡Logro Desbloqueado!"
+  }
+}

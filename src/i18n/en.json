@@ -1,0 +1,207 @@
+{
+  "nav": {
+    "journey": "Journey",
+    "skills": "Skills",
+    "experience": "Experience",
+    "projects": "Projects",
+    "stats": "Stats",
+    "contact": "Contact",
+    "devMode": "Dev Mode"
+  },
+  "hero": {
+    "headline": "Brenda Bispo // Backend Software Developer",
+    "subheadline": "Helping build resilient, scalable systems that impact millions of users daily.",
+    "highlight": "Part of the engineering team at Mercado Livre, working on Full Super — Mercado Livre's grocery delivery — where I face the challenges of a distributed ecosystem across Latin America. I'm passionate about my craft because I know that what we build impacts real people's everyday lives.",
+    "intro": "Rooted in Itagimirim, a small town in Bahia, Brazil, but my code reaches all of Latin America. Backend-focused with Java, but never afraid of new languages — I also code in Kotlin, Go, JavaScript, and TypeScript. I develop high-performance microservices while collaborating daily with people from diverse cultures in Argentina, Colombia, Uruguay, and Chile.",
+    "viewProjects": "View Projects",
+    "playJourney": "Play My Dev Journey"
+  },
+  "journey": {
+    "title": "Developer Journey",
+    "levels": [
+      {
+        "level": 1,
+        "title": "Roots",
+        "description": "Born and raised in Itagimirim, Bahia — a small town that forged my determination and relentless curiosity to go beyond."
+      },
+      {
+        "level": 2,
+        "title": "Federal Institute of Bahia",
+        "description": "Completed high school at IFBA, building a strong academic foundation and sparking my curiosity for science and technology."
+      },
+      {
+        "level": 3,
+        "title": "University & Health Sciences",
+        "description": "Moved to a new city to study Health Sciences and Biomedicine at UFSB. A stage of personal and intellectual growth."
+      },
+      {
+        "level": 4,
+        "title": "First Tech Project",
+        "description": "At university, I created \"Patógenos Bioecológicos\" — an educational game about biological pathogens using block programming that generated Kotlin under the hood. My first encounter with code."
+      },
+      {
+        "level": 5,
+        "title": "Transition to Technology",
+        "description": "The passion for solving problems through code spoke louder. I decided to switch to software engineering and never looked back."
+      },
+      {
+        "level": 6,
+        "title": "Mercado Livre Bootcamp",
+        "description": "Entered the Mercado Livre ecosystem through the bootcamp, diving headfirst into software engineering at scale. The start of my professional career."
+      },
+      {
+        "level": 7,
+        "title": "Backend Engineer",
+        "description": "Became a Backend Software Developer, deepening my knowledge of distributed systems, microservices, and the Meli ecosystem."
+      },
+      {
+        "level": 8,
+        "title": "Supermarket Team",
+        "description": "Working on the Supermarket team at Mercado Livre — understanding the business, participating in on-call rotations, and evolving the platform daily."
+      },
+      {
+        "level": 9,
+        "title": "Purpose-Driven Projects",
+        "description": "Building apps that go beyond code: AntiBet Alerta, to fight gambling addiction; Liv+, to help patients with chronic rheumatological diseases manage their daily treatment — and more to come."
+      },
+      {
+        "level": 10,
+        "title": "Next Chapter",
+        "description": "The journey continues. New technologies to master, new systems to architect, new challenges to overcome. The best is yet to come."
+      }
+    ],
+    "complete": "JOURNEY COMPLETE",
+    "badges": "badges",
+    "forNow": "for now...",
+    "gameOver": "GAME OVER",
+    "startTitle": "DEVELOPER JOURNEY",
+    "startSubtitle": "An adventure through my career path",
+    "startButton": "Start Journey",
+    "startHint": "Use ← → to move, ↑ to jump, ↓ to drop",
+    "playAgain": "↺ play again",
+    "tryAgain": "↺ try again",
+    "reset": "↺ reset",
+    "terminalTitle": "developer-journey.exe",
+    "enemies": {
+      "daydream": "ADHD: head in the clouds",
+      "doubt": "Doubts about the future",
+      "saudade": "Missing family",
+      "virus": "Viruses & pathogens",
+      "money": "Financial pressure",
+      "bug": "Ecosystem bugs",
+      "cart": "Supermarket chaos",
+      "alert": "Production alerts",
+      "clock": "Race against time"
+    }
+  },
+  "techStack": {
+    "title": "Engineering Skills",
+    "categories": {
+      "backend": "Backend Core",
+      "platform": "Architecture & Platform",
+      "practices": "Quality & Operations"
+    }
+  },
+  "experience": {
+    "title": "Backend Engineer – Mercado Livre (3+ years)",
+    "intro": "Helping build resilient, scalable systems that impact millions of users daily.",
+    "achievements": [
+      {
+        "title": "Reliability at Scale",
+        "description": "On-call rotations ensuring the health of critical user flows in production."
+      },
+      {
+        "title": "Performance Engineering",
+        "description": "Built observability dashboards and metrics for high-traffic APIs (Cart and Checkout)."
+      },
+      {
+        "title": "Mentorship & Quality",
+        "description": "Over 40 PR Reviews focused on security, performance, and maintainability."
+      },
+      {
+        "title": "Safe Rollouts",
+        "description": "Feature flag activations, A/B experiments, and regression testing for zero-impact deployments."
+      },
+      {
+        "title": "Service Migrations",
+        "description": "Legacy service migrations and automated validation scripts."
+      },
+      {
+        "title": "Multicultural Collaboration",
+        "description": "Daily collaboration with engineers from Argentina, Colombia, Uruguay, and Chile in a distributed environment."
+      }
+    ]
+  },
+  "projects": {
+    "title": "Personal Lab",
+    "intro": "Beyond the scale of work, I use personal projects to explore new technologies and solve real everyday problems.",
+    "project1": {
+      "title": "Patógenos Bioecológicos",
+      "description": "A crossover between education and technology.",
+      "goal": "Teaching biological pathogen concepts through interactive gameplay.",
+      "tech": "Built with Kotlin and block-based programming logic."
+    },
+    "project2": {
+      "title": "AntiBet Alerta",
+      "description": "Android app focused on social impact.",
+      "purpose": "Detecting gambling websites and sending alerts to help fight addiction.",
+      "status": "Coming soon"
+    },
+    "project3": {
+      "title": "Liv+",
+      "description": "Health and technology walking together.",
+      "purpose": "Helping patients with chronic rheumatological diseases manage their daily treatment, and in the future enabling doctors to track patient progress.",
+      "status": "In development"
+    }
+  },
+  "stats": {
+    "title": "Engineer Stats",
+    "yearsCoding": "Years Coding",
+    "yearsMeli": "Years at Mercado Livre",
+    "prsCreated": "PRs Created",
+    "prReviews": "PR Reviews",
+    "repos": "Repositories",
+    "systemsSupported": "Systems for Millions",
+    "onCall": "On-call Rotations"
+  },
+  "softSkills": {
+    "title": "Soft Skills",
+    "skills": [
+      "Determined and resilient",
+      "Excellent communication",
+      "Strong collaboration and teamwork",
+      "Experienced in multicultural teams",
+      "Passionate about learning new technologies",
+      "Driven by complex challenges",
+      "Proactive mindset"
+    ]
+  },
+  "languages": {
+    "title": "Languages",
+    "items": [
+      { "name": "Portuguese", "level": "Native" },
+      { "name": "Spanish", "level": "Intermediate" },
+      { "name": "English", "level": "Beginner" }
+    ]
+  },
+  "terminal": {
+    "welcome": "Welcome to Dev Mode! Type 'help' to see available commands.",
+    "prompt": "brenda@portfolio",
+    "commands": {
+      "help": "Available commands:\n  help      - Show this message\n  about     - About me\n  projects  - My projects\n  skills    - My skills\n  contact   - Contact info\n  clear     - Clear terminal",
+      "about": "Backend Engineer at Mercado Livre.\nFrom Itagimirim, Bahia, Brazil.\n3+ years building scalable systems for millions of users.\nCollaborating daily with distributed teams across Latin America.",
+      "projects": "1. Patógenos Bioecológicos - Educational game (Kotlin)\n2. AntiBet Alerta - Android app against gambling addiction (Kotlin)\n3. Liv+ - App for chronic rheumatological disease patients (Kotlin) [in dev]\n\nBeyond work, I use personal projects to explore new technologies.",
+      "skills": "Backend Core: Java (90%) | Kotlin (75%) | Go (50%)\nArchitecture: Spring Boot (85%) | Microservices (80%) | REST APIs (85%)\nQuality: Observability (70%) | Testing (70%) | Code Review (80%) | Security (60%)",
+      "contact": "LinkedIn: linkedin.com/in/bfrancisco-bispo\nGitHub: github.com/bfrancisco-bispo\nEmail: bfranciscobispo@gmail.com",
+      "unknown": "Command not recognized. Type 'help' to see available commands."
+    }
+  },
+  "contact": {
+    "title": "Let's build something meaningful.",
+    "subtitle": "Ready to collaborate on challenging projects and impact millions of users."
+  },
+  "easter": {
+    "konami": "🎮 KONAMI CODE ACTIVATED! You've unlocked secret mode!",
+    "achievement": "🏆 Achievement Unlocked!"
+  }
+}
