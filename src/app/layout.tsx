@@ -1,6 +1,29 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { cookies } from "next/headers";
 import { LanguageProvider } from "@/i18n/LanguageContext";
+import { Orbitron, JetBrains_Mono, Inter } from "next/font/google";
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Brenda Bispo | Backend Software Developer",
@@ -16,7 +39,7 @@ export const metadata: Metadata = {
     "Microservices",
     "Portfolio",
   ],
-  metadataBase: new URL("https://brendabispo.dev"),
+  metadataBase: new URL("https://brendabispo.com"),
   openGraph: {
     title: "Brenda Bispo | Backend Software Developer",
     description:
@@ -37,13 +60,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const locale = cookieStore.get("portfolio-locale")?.value ?? "pt";
   return (
-    <html lang="pt" className="dark">
+    <html
+      lang={locale}
+      className={`dark ${orbitron.variable} ${jetbrainsMono.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
       <body className="antialiased">
         <LanguageProvider>{children}</LanguageProvider>
       </body>
