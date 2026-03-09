@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "Microservices",
     "Portfolio",
   ],
-  metadataBase: new URL("https://brendabispo.com"),
+  metadataBase: new URL("https://home.brendabispo.com"),
   openGraph: {
     title: "Brenda Bispo | Backend Software Developer",
     description:
