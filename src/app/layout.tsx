@@ -28,22 +28,29 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Brenda Bispo | Backend Software Developer",
   description:
-    "Backend Software Developer building scalable systems for millions of users. Currently at Mercado Livre.",
+    "Backend Software Developer building scalable systems for millions of users. Currently at Mercado Libre.",
   keywords: [
     "Backend Developer",
     "Software Developer",
-    "Mercado Livre",
+    "Mercado Libre",
     "Java",
     "Kotlin",
     "Distributed Systems",
     "Microservices",
     "Portfolio",
   ],
+  authors: [{ name: "Brenda Bispo", url: "https://home.brendabispo.com" }],
+  creator: "Brenda Bispo",
   metadataBase: new URL("https://home.brendabispo.com"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Brenda Bispo | Backend Software Developer",
     description:
       "Backend Software Developer building scalable systems for millions of users.",
+    url: "https://home.brendabispo.com",
+    siteName: "Brenda Bispo",
     type: "website",
     locale: "pt_BR",
     alternateLocale: ["en_US", "es_AR"],
@@ -53,6 +60,7 @@ export const metadata: Metadata = {
     title: "Brenda Bispo | Backend Software Developer",
     description:
       "Backend Software Developer building scalable systems for millions of users.",
+    creator: "@brendabispo",
   },
   robots: {
     index: true,
