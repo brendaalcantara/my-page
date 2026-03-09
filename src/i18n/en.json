@@ -6,12 +6,14 @@
     "projects": "Projects",
     "stats": "Stats",
     "contact": "Contact",
-    "devMode": "Dev Mode"
+    "devMode": "Dev Mode",
+    "ariaLabel": "Main navigation",
+    "menuLabel": "Open menu"
   },
   "hero": {
     "headline": "Brenda Bispo // Backend Software Developer",
     "subheadline": "Helping build resilient, scalable systems that impact millions of users daily.",
-    "highlight": "Part of the engineering team at Mercado Livre, working on Full Super — Mercado Livre's grocery delivery — where I face the challenges of a distributed ecosystem across Latin America. I'm passionate about my craft because I know that what we build impacts real people's everyday lives.",
+    "highlight": "Part of the engineering team at Mercado Livre, working on Full Super — Mercado Livre's supermarket — where I deal with the challenges of a distributed ecosystem across Latin America. I'm passionate about my craft because I know that what we build impacts real people's everyday lives.",
     "intro": "Rooted in Itagimirim, a small town in Bahia, Brazil, but my code reaches all of Latin America. Backend-focused with Java, but never afraid of new languages — I also code in Kotlin, Go, JavaScript, and TypeScript. I develop high-performance microservices while collaborating daily with people from diverse cultures in Argentina, Colombia, Uruguay, and Chile.",
     "viewProjects": "View Projects",
     "playJourney": "Play My Dev Journey"
@@ -22,7 +24,7 @@
       {
         "level": 1,
         "title": "Roots",
-        "description": "Born and raised in Itagimirim, Bahia — a small town that forged my determination and relentless curiosity to go beyond."
+        "description": "Born and raised in Itagimirim, Bahia in Brazil — a small town that shaped my determination and relentless curiosity to go beyond."
       },
       {
         "level": 2,
@@ -57,7 +59,7 @@
       {
         "level": 8,
         "title": "Supermarket Team",
-        "description": "Working on the Supermarket team at Mercado Livre — understanding the business, participating in on-call rotations, and evolving the platform daily."
+        "description": "Working on the Supermarket team at Mercado Livre — understanding the business, shadowing on-call rotations, and evolving the platform daily."
       },
       {
         "level": 9,
@@ -72,6 +74,17 @@
     ],
     "complete": "JOURNEY COMPLETE",
     "badges": "badges",
+    "badgeLabels": [
+      "Determined & Resilient",
+      "Collaboration & Teamwork",
+      "Excellent Communication",
+      "Proactive Mindset",
+      "Java",
+      "Meli Ecosystem",
+      "Observability",
+      "Spanish",
+      "New Technologies"
+    ],
     "forNow": "for now...",
     "gameOver": "GAME OVER",
     "startTitle": "DEVELOPER JOURNEY",
@@ -88,8 +101,8 @@
       "saudade": "Missing family",
       "virus": "Viruses & pathogens",
       "money": "Financial pressure",
+      "adapt": "Adapting to dev life",
       "bug": "Ecosystem bugs",
-      "cart": "Supermarket chaos",
       "alert": "Production alerts",
       "clock": "Race against time"
     }
@@ -104,19 +117,20 @@
   },
   "experience": {
     "title": "Backend Engineer – Mercado Livre (3+ years)",
+    "achievementUnlocked": "Achievement Unlocked",
     "intro": "Helping build resilient, scalable systems that impact millions of users daily.",
     "achievements": [
       {
         "title": "Reliability at Scale",
-        "description": "On-call rotations ensuring the health of critical user flows in production."
+        "description": "Shadow on-call rotations ensuring the health of critical user flows in production."
       },
       {
         "title": "Performance Engineering",
-        "description": "Built observability dashboards and metrics for high-traffic APIs (Cart and Checkout)."
+        "description": "Built observability dashboards and metrics for high-traffic APIs."
       },
       {
         "title": "Mentorship & Quality",
-        "description": "Over 40 PR Reviews focused on security, performance, and maintainability."
+        "description": "Over 121 PR Reviews focused on security, performance, and maintainability."
       },
       {
         "title": "Safe Rollouts",
@@ -160,9 +174,9 @@
     "yearsMeli": "Years at Mercado Livre",
     "prsCreated": "PRs Created",
     "prReviews": "PR Reviews",
-    "repos": "Repositories",
+    "repos": "Repos Contributed",
     "systemsSupported": "Systems for Millions",
-    "onCall": "On-call Rotations"
+    "onCall": "Shadow On-call"
   },
   "softSkills": {
     "title": "Soft Skills",
@@ -179,20 +193,22 @@
   "languages": {
     "title": "Languages",
     "items": [
-      { "name": "Portuguese", "level": "Native" },
-      { "name": "Spanish", "level": "Intermediate" },
-      { "name": "English", "level": "Beginner" }
+      { "name": "Portuguese", "level": "Native", "code": "pt", "proficiency": 100 },
+      { "name": "Spanish", "level": "Advanced", "code": "es", "proficiency": 80 },
+      { "name": "English", "level": "Beginner", "code": "en", "proficiency": 30 }
     ]
   },
   "terminal": {
     "welcome": "Welcome to Dev Mode! Type 'help' to see available commands.",
     "prompt": "brenda@portfolio",
+    "closeLabel": "Close terminal",
+    "bash": "bash",
     "commands": {
       "help": "Available commands:\n  help      - Show this message\n  about     - About me\n  projects  - My projects\n  skills    - My skills\n  contact   - Contact info\n  clear     - Clear terminal",
-      "about": "Backend Engineer at Mercado Livre.\nFrom Itagimirim, Bahia, Brazil.\n3+ years building scalable systems for millions of users.\nCollaborating daily with distributed teams across Latin America.",
+      "about": "Backend Software Developer at Mercado Livre.\nFrom Itagimirim, Bahia, Brazil.\n3+ years building scalable systems for millions of users.\n154+ PRs created | 121+ PR Reviews | 76 repos contributed.\nCollaborating daily with distributed teams across Latin America.",
       "projects": "1. Patógenos Bioecológicos - Educational game (Kotlin)\n2. AntiBet Alerta - Android app against gambling addiction (Kotlin)\n3. Liv+ - App for chronic rheumatological disease patients (Kotlin) [in dev]\n\nBeyond work, I use personal projects to explore new technologies.",
-      "skills": "Backend Core: Java (90%) | Kotlin (75%) | Go (50%)\nArchitecture: Spring Boot (85%) | Microservices (80%) | REST APIs (85%)\nQuality: Observability (70%) | Testing (70%) | Code Review (80%) | Security (60%)",
-      "contact": "LinkedIn: linkedin.com/in/bfrancisco-bispo\nGitHub: github.com/bfrancisco-bispo\nEmail: bfranciscobispo@gmail.com",
+      "skills": "Backend Core: Java (85%) | Kotlin (70%) | System Design (60%) | Distributed Systems (60%)\nArchitecture & Platform: Spring Boot (85%) | Microservices (70%) | REST APIs (90%) | Event-driven (60%)\nQuality & Operations: Observability (75%) | Testing (80%) | Code Review (80%) | Security (60%)",
+      "contact": "LinkedIn: linkedin.com/in/brendabispo\nGitHub: github.com/brendaalcantara\nEmail: brendaalcantarabba@gmail.com",
       "unknown": "Command not recognized. Type 'help' to see available commands."
     }
   },

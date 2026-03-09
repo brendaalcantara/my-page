@@ -20,21 +20,18 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("pt");
+  const [locale, setLocaleState] = useState<Locale>(() => {
+    if (typeof window === "undefined") return "pt";
+    const saved = localStorage.getItem("portfolio-locale") as Locale | null;
+    return saved && translations[saved] ? saved : "pt";
+  });
 
   const setLocale = useCallback((newLocale: Locale) => {
     setLocaleState(newLocale);
     if (typeof window !== "undefined") {
       localStorage.setItem("portfolio-locale", newLocale);
+      document.cookie = `portfolio-locale=${newLocale};path=/;max-age=31536000;SameSite=Lax`;
       document.documentElement.lang = newLocale;
-    }
-  }, []);
-
-  React.useEffect(() => {
-    const saved = localStorage.getItem("portfolio-locale") as Locale | null;
-    if (saved && translations[saved]) {
-      setLocaleState(saved);
-      document.documentElement.lang = saved;
     }
   }, []);
 

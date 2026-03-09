@@ -6,12 +6,14 @@
     "projects": "Projetos",
     "stats": "Stats",
     "contact": "Contato",
-    "devMode": "Dev Mode"
+    "devMode": "Dev Mode",
+    "ariaLabel": "Navegação principal",
+    "menuLabel": "Abrir menu"
   },
   "hero": {
     "headline": "Brenda Bispo // Backend Software Developer",
     "subheadline": "Ajudando a construir sistemas resilientes e escaláveis que impactam milhões de usuários diariamente.",
-    "highlight": "Faço parte do time de engenharia do Mercado Livre, atuando na área de Full Super — o supermercado do Mercado Livre — onde encaro os desafios de um ecossistema distribuído por toda a América Latina. Sou apaixonada pela minha profissão porque sei que, com o que fazemos, consigo impactar o dia a dia de pessoas reais.",
+    "highlight": "Faço parte do time de engenharia do Mercado Livre, atuando na área de Full Super — o supermercado do Mercado Livre — onde lido com desafios de um ecossistema distribuído por toda a América Latina. Sou apaixonada pela minha profissão porque sei que, com o que fazemos, consigo impactar o dia a dia de pessoas reais.",
     "intro": "Minha base vem de Itagimirim, no interior da Bahia, mas meu código alcança toda a América Latina. Foco no backend com Java, mas sem medo de novas linguagens — codifico também em Kotlin, Go, JavaScript e TypeScript. Atuo no desenvolvimento de microsserviços de alta performance, colaborando diariamente com pessoas de culturas diversas na Argentina, Colômbia, Uruguai e Chile.",
     "viewProjects": "Ver Projetos",
     "playJourney": "Jogar Minha Jornada Dev"
@@ -22,7 +24,7 @@
       {
         "level": 1,
         "title": "Raízes",
-        "description": "Nascida e criada em Itagimirim, Bahia — uma pequena cidade que moldou minha determinação e a curiosidade incansável de ir além."
+        "description": "Nascida e criada em Itagimirim, Bahia no Brasil — uma pequena cidade que moldou minha determinação e a curiosidade incansável de ir além."
       },
       {
         "level": 2,
@@ -57,7 +59,7 @@
       {
         "level": 8,
         "title": "Time Supermercado",
-        "description": "Atuando no time de Supermercado do Mercado Livre — entendendo o negócio, participando de rotações on-call e evoluindo a plataforma diariamente."
+        "description": "Atuando no time de Supermercado do Mercado Livre — entendendo o negócio, participando como shadow em rotações on-call e evoluindo a plataforma diariamente."
       },
       {
         "level": 9,
@@ -72,6 +74,17 @@
     ],
     "complete": "JORNADA COMPLETA",
     "badges": "insígnias",
+    "badgeLabels": [
+      "Determinada & Resiliente",
+      "Colaboração & Equipe",
+      "Excelente Comunicação",
+      "Mentalidade Proativa",
+      "Java",
+      "Ecossistema Meli",
+      "Observabilidade",
+      "Español",
+      "Novas Tecnologias"
+    ],
     "forNow": "por enquanto...",
     "gameOver": "GAME OVER",
     "startTitle": "JORNADA DA DESENVOLVEDORA",
@@ -88,8 +101,8 @@
       "saudade": "Saudade da família",
       "virus": "Vírus e patógenos",
       "money": "Pressão financeira",
+      "adapt": "Adaptação à vida de dev",
       "bug": "Bugs do ecossistema",
-      "cart": "Caos do supermercado",
       "alert": "Alertas de produção",
       "clock": "Corrida contra o tempo"
     }
@@ -104,19 +117,20 @@
   },
   "experience": {
     "title": "Engenheira Backend – Mercado Livre (3+ anos)",
+    "achievementUnlocked": "Conquista Desbloqueada",
     "intro": "Ajudando a construir sistemas resilientes e escaláveis que impactam milhões de usuários diariamente.",
     "achievements": [
       {
         "title": "Confiabilidade em Escala",
-        "description": "Atuação em rotações on-call para garantir a saúde de fluxos críticos de usuário em produção."
+        "description": "Atuação como shadow em rotações on-call para garantir a saúde de fluxos críticos de usuário em produção."
       },
       {
         "title": "Engenharia de Performance",
-        "description": "Criação de dashboards e métricas de observabilidade para APIs de alto tráfego (Carrinho e Checkout)."
+        "description": "Criação de dashboards e métricas de observabilidade para APIs de alto tráfego."
       },
       {
         "title": "Mentoria e Qualidade",
-        "description": "Mais de 40 PR Reviews focados em segurança, performance e manutenibilidade."
+        "description": "Mais de 121 PR Reviews focados em segurança, performance e manutenibilidade."
       },
       {
         "title": "Rollouts Seguros",
@@ -160,9 +174,9 @@
     "yearsMeli": "Anos no Mercado Livre",
     "prsCreated": "PRs Criados",
     "prReviews": "PR Reviews",
-    "repos": "Repositórios",
+    "repos": "Repositórios Contribuídos",
     "systemsSupported": "Sistemas para Milhões",
-    "onCall": "Rotações On-call"
+    "onCall": "Shadow On-call"
   },
   "softSkills": {
     "title": "Soft Skills",
@@ -179,20 +193,22 @@
   "languages": {
     "title": "Idiomas",
     "items": [
-      { "name": "Português", "level": "Nativo" },
-      { "name": "Espanhol", "level": "Intermediário" },
-      { "name": "Inglês", "level": "Iniciante" }
+      { "name": "Português", "level": "Nativo", "code": "pt", "proficiency": 100 },
+      { "name": "Espanhol", "level": "Avançado", "code": "es", "proficiency": 80 },
+      { "name": "Inglês", "level": "Iniciante", "code": "en", "proficiency": 30 }
     ]
   },
   "terminal": {
     "welcome": "Bem-vinda ao Dev Mode! Digite 'help' para ver os comandos disponíveis.",
     "prompt": "brenda@portfolio",
+    "closeLabel": "Fechar terminal",
+    "bash": "bash",
     "commands": {
       "help": "Comandos disponíveis:\n  help      - Mostra esta mensagem\n  about     - Sobre mim\n  projects  - Meus projetos\n  skills    - Minhas habilidades\n  contact   - Informações de contato\n  clear     - Limpar terminal",
-      "about": "Engenheira Backend no Mercado Livre.\nNatural de Itagimirim, Bahia, Brasil.\n3+ anos construindo sistemas escaláveis para milhões de usuários.\nColaborando diariamente com times distribuídos pela América Latina.",
+      "about": "Desenvolvedora Backend no Mercado Livre.\nNatural de Itagimirim, Bahia, Brasil.\n3+ anos construindo sistemas escaláveis para milhões de usuários.\n154+ PRs criados | 121+ PR Reviews | 76 repositórios contribuídos.\nColaborando diariamente com times distribuídos pela América Latina.",
       "projects": "1. Patógenos Bioecológicos - Jogo educativo (Kotlin)\n2. AntiBet Alerta - App Android contra vício em apostas (Kotlin)\n3. Liv+ - App para pacientes de doenças crônicas reumatológicas (Kotlin) [em dev]\n\nPara além da escala do trabalho, uso projetos pessoais para explorar novas tecnologias.",
-      "skills": "Backend Core: Java (90%) | Kotlin (75%) | Go (50%)\nArquitetura: Spring Boot (85%) | Microservices (80%) | REST APIs (85%)\nQualidade: Observabilidade (70%) | Testing (70%) | Code Review (80%) | Segurança (60%)",
-      "contact": "LinkedIn: linkedin.com/in/bfrancisco-bispo\nGitHub: github.com/bfrancisco-bispo\nEmail: bfranciscobispo@gmail.com",
+      "skills": "Backend Core: Java (85%) | Kotlin (70%) | System Design (60%) | Distributed Systems (60%)\nArquitetura & Plataforma: Spring Boot (85%) | Microservices (70%) | REST APIs (90%) | Event-driven (60%)\nQualidade & Operações: Observabilidade (75%) | Testing (80%) | Code Review (80%) | Segurança (60%)",
+      "contact": "LinkedIn: linkedin.com/in/brendabispo\nGitHub: github.com/brendaalcantara\nEmail: brendaalcantarabba@gmail.com",
       "unknown": "Comando não reconhecido. Digite 'help' para ver os comandos disponíveis."
     }
   },
