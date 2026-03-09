@@ -2,11 +2,13 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { useEffect, useRef, useState, ReactNode } from "react";
-import { statsIconComponents } from "./Icons";
+import { useEffect, useRef, useState } from "react";
+import { statsIcons } from "./Icons";
+
+type StatIcon = (typeof statsIcons)[number];
 
 function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string }) {
-  const [display, setDisplay] = useState(0);
+  const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
 
@@ -26,7 +28,7 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
-            setDisplay(Math.round(eased * value));
+            setCount(Math.round(eased * value));
             if (progress < 1) requestAnimationFrame(step);
           }
 
@@ -42,21 +44,21 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
 
   return (
     <span ref={ref} className="font-display text-3xl sm:text-4xl font-bold gradient-text">
-      {display}{suffix}
+      {count}{suffix}
     </span>
   );
 }
 
 type StatKey = "yearsCoding" | "yearsMeli" | "prsCreated" | "prReviews" | "repos" | "systemsSupported" | "onCall";
 
-const statsData: { key: StatKey; value: number; suffix: string; icon: ReactNode; special?: boolean }[] = [
-  { key: "yearsCoding", value: 5, suffix: "+", icon: statsIconComponents[0] },
-  { key: "yearsMeli", value: 3, suffix: "+", icon: statsIconComponents[1] },
-  { key: "prsCreated", value: 154, suffix: "", icon: statsIconComponents[2] },
-  { key: "prReviews", value: 121, suffix: "", icon: statsIconComponents[3] },
-  { key: "repos", value: 76, suffix: "", icon: statsIconComponents[4] },
-  { key: "systemsSupported", value: 0, suffix: "", icon: statsIconComponents[5], special: true },
-  { key: "onCall", value: 0, suffix: "", icon: statsIconComponents[6], special: true },
+const statsData: { key: StatKey; value: number; suffix: string; Icon: StatIcon; display?: string }[] = [
+  { key: "yearsCoding", value: 5, suffix: "+", Icon: statsIcons[0] },
+  { key: "yearsMeli", value: 3, suffix: "+", Icon: statsIcons[1] },
+  { key: "prsCreated", value: 154, suffix: "+", Icon: statsIcons[2] },
+  { key: "prReviews", value: 121, suffix: "+", Icon: statsIcons[3] },
+  { key: "repos", value: 76, suffix: "", Icon: statsIcons[4] },
+  { key: "systemsSupported", value: 0, suffix: "", Icon: statsIcons[5], display: "M+" },
+  { key: "onCall", value: 0, suffix: "", Icon: statsIcons[6], display: "✓" },
 ];
 
 export default function Stats() {
@@ -89,17 +91,17 @@ export default function Stats() {
                 transition={{ delay: index * 0.1 }}
               >
                 <div className="flex justify-center mb-2 text-foreground/60">
-                  {stat.icon}
+                  <stat.Icon size={28} />
                 </div>
-                {stat.special ? (
+                {stat.display ? (
                   <span className="font-display text-3xl sm:text-4xl font-bold gradient-text">
-                    {stat.key === "onCall" ? "✓" : "M+"}
+                    {stat.display}
                   </span>
                 ) : (
                   <AnimatedNumber value={stat.value} suffix={stat.suffix} />
                 )}
                 <p className="text-foreground/50 text-xs font-mono mt-2 uppercase tracking-wider">
-                  {(t.stats as Record<string, string>)[stat.key]}
+                  {t.stats[stat.key]}
                 </p>
               </motion.div>
             ))}

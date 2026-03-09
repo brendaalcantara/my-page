@@ -2,41 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
-
-interface Skill {
-  name: string;
-  level: number;
-}
-
-const skillCategories: { key: "backend" | "platform" | "practices"; skills: Skill[] }[] = [
-  {
-    key: "backend",
-    skills: [
-      { name: "Java", level: 85 },
-      { name: "Kotlin", level: 70 },
-      { name: "System Design", level: 60 },
-      { name: "Distributed Systems", level: 50 },
-    ],
-  },
-  {
-    key: "platform",
-    skills: [
-      { name: "Spring Boot", level: 85 },
-      { name: "Microservices", level: 70 },
-      { name: "REST APIs", level: 90 },
-      { name: "Event-driven Architecture", level: 55 },
-    ],
-  },
-  {
-    key: "practices",
-    skills: [
-      { name: "Observability", level: 70 },
-      { name: "Testing", level: 75 },
-      { name: "Code Review", level: 75 },
-      { name: "Security", level: 55 },
-    ],
-  },
-];
+import { skillCategories } from "@/config/skills";
 
 function XPBar({ name, level, delay }: { name: string; level: number; delay: number }) {
   return (

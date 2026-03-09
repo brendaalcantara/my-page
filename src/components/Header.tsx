@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage, Locale } from "@/i18n/LanguageContext";
+import { scrollToSection } from "@/utils/scroll";
 
 const localeLabels: Record<Locale, string> = { pt: "PT", es: "ES", en: "EN" };
 const locales: Locale[] = ["pt", "es", "en"];
@@ -21,7 +22,7 @@ export default function Header({ onDevMode }: { onDevMode: () => void }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection(id);
     setMenuOpen(false);
   };
 
@@ -38,7 +39,7 @@ export default function Header({ onDevMode }: { onDevMode: () => void }) {
             &lt;DEV /&gt;
           </motion.button>
 
-          <nav className="hidden md:flex items-center gap-1">
+          <nav aria-label={t.nav.ariaLabel} className="hidden md:flex items-center gap-1">
             {navIds.map((id) => (
               <motion.button
                 key={id}
@@ -79,7 +80,7 @@ export default function Header({ onDevMode }: { onDevMode: () => void }) {
             <button
               className="md:hidden text-foreground/70 hover:text-neon-blue transition-colors"
               onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Menu"
+              aria-label={t.nav.menuLabel}
             >
               <svg
                 className="w-6 h-6"

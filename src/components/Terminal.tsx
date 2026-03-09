@@ -26,6 +26,7 @@ export default function Terminal({
 
   useEffect(() => {
     if (isOpen) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: reset terminal content when opened
       setLines([{ type: "output", content: t.terminal.welcome }]);
       setTimeout(() => inputRef.current?.focus(), 100);
     }
@@ -116,13 +117,14 @@ export default function Terminal({
                 <div className="flex gap-1.5">
                   <button
                     onClick={onClose}
+                    aria-label={t.terminal.closeLabel}
                     className="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors"
                   />
                   <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                   <div className="w-3 h-3 rounded-full bg-green-500/80" />
                 </div>
                 <span className="text-xs font-mono text-foreground/40 ml-3">
-                  {t.terminal.prompt} — bash
+                  {t.terminal.prompt} — {t.terminal.bash}
                 </span>
               </div>
               <button
