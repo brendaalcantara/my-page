@@ -21,11 +21,11 @@ function GamepadButton({
 }) {
   const colors =
     variant === "purple"
-      ? "border-neon-purple/20 text-neon-purple active:bg-neon-purple/20"
-      : "border-neon-blue/20 text-neon-blue active:bg-neon-blue/20";
+      ? "border-neon-purple/40 text-neon-purple bg-neon-purple/10 active:bg-neon-purple/30 shadow-[0_0_12px_rgba(168,85,247,0.2)]"
+      : "border-neon-blue/30 text-neon-blue bg-neon-blue/5 active:bg-neon-blue/20";
   return (
     <button
-      className={`w-12 h-12 rounded-xl bg-dark-800/60 backdrop-blur border ${colors} text-lg flex items-center justify-center select-none ${className}`}
+      className={`rounded-2xl backdrop-blur border ${colors} flex items-center justify-center select-none touch-none transition-transform active:scale-95 ${className}`}
       onTouchStart={(e) => { e.preventDefault(); onActivate(); }}
       onTouchEnd={onDeactivate}
       onTouchCancel={onDeactivate}
@@ -191,30 +191,26 @@ export default function DeveloperJourney() {
             )}
 
             {currentLevel !== FINALE_IDX && (
-              <div className="absolute bottom-3 left-3 z-20 flex items-center gap-1">
+              <div className="absolute bottom-2 left-2 z-20 flex items-center gap-1">
                 <button
                   onClick={() => goToLevel(Math.max(0, currentLevel - 1))}
                   disabled={currentLevel === 0}
-                  className="w-8 h-8 rounded-lg bg-dark-800/70 backdrop-blur border border-foreground/10 text-foreground/50 hover:text-neon-blue hover:border-neon-blue/30 transition-colors disabled:opacity-20 flex items-center justify-center text-sm"
+                  className="w-10 h-10 rounded-xl bg-dark-800/80 backdrop-blur border border-foreground/15 text-foreground/60 hover:text-neon-blue hover:border-neon-blue/40 transition-all disabled:opacity-15 flex items-center justify-center text-base font-bold"
+                  title="Previous level"
                 >
                   ◀
                 </button>
+                <span className="text-[9px] font-mono text-foreground/30 px-1 hidden sm:block">
+                  {currentLevel + 1}/{LEVELS.length}
+                </span>
                 <button
                   onClick={() => goToLevel(Math.min(FINALE_IDX, currentLevel + 1))}
                   disabled={currentLevel === FINALE_IDX}
-                  className="w-8 h-8 rounded-lg bg-dark-800/70 backdrop-blur border border-foreground/10 text-foreground/50 hover:text-neon-blue hover:border-neon-blue/30 transition-colors disabled:opacity-20 flex items-center justify-center text-sm"
+                  className="w-10 h-10 rounded-xl bg-dark-800/80 backdrop-blur border border-foreground/15 text-foreground/60 hover:text-neon-blue hover:border-neon-blue/40 transition-all disabled:opacity-15 flex items-center justify-center text-base font-bold"
+                  title="Next level"
                 >
                   ▶
                 </button>
-              </div>
-            )}
-
-            {currentLevel !== FINALE_IDX && (
-              <div className="absolute bottom-3 right-3 z-20 flex items-center gap-1 md:hidden">
-                <GamepadButton label="←" onActivate={() => { touchRef.current.left = true; }} onDeactivate={() => { touchRef.current.left = false; }} />
-                <GamepadButton label="→" onActivate={() => { touchRef.current.right = true; }} onDeactivate={() => { touchRef.current.right = false; }} />
-                <GamepadButton label="↓" onActivate={() => { touchRef.current.down = true; }} onDeactivate={() => { touchRef.current.down = false; }} />
-                <GamepadButton label="↑" onActivate={() => { touchRef.current.jump = true; }} onDeactivate={() => { touchRef.current.jump = false; }} variant="purple" className="ml-2" />
               </div>
             )}
 
@@ -236,6 +232,46 @@ export default function DeveloperJourney() {
               </div>
             )}
           </div>
+
+          {currentLevel !== FINALE_IDX && gameStarted && !gameOver && (
+            <div className="md:hidden bg-dark-900/80 border-t border-neon-blue/10 px-5 py-4">
+              <div className="flex items-center justify-between max-w-xs mx-auto">
+
+                {/* Left thumb: movement */}
+                <div className="flex flex-col items-center gap-2">
+                  <div className="flex gap-2">
+                    <GamepadButton
+                      label="←"
+                      onActivate={() => { touchRef.current.left = true; }}
+                      onDeactivate={() => { touchRef.current.left = false; }}
+                      className="w-16 h-16 text-2xl"
+                    />
+                    <GamepadButton
+                      label="→"
+                      onActivate={() => { touchRef.current.right = true; }}
+                      onDeactivate={() => { touchRef.current.right = false; }}
+                      className="w-16 h-16 text-2xl"
+                    />
+                  </div>
+                  <GamepadButton
+                    label="↓  drop"
+                    onActivate={() => { touchRef.current.down = true; }}
+                    onDeactivate={() => { touchRef.current.down = false; }}
+                    className="w-24 h-9 text-xs font-mono opacity-50"
+                  />
+                </div>
+
+                {/* Right thumb: jump */}
+                <GamepadButton
+                  label="JUMP"
+                  onActivate={() => { touchRef.current.jump = true; }}
+                  onDeactivate={() => { touchRef.current.jump = false; }}
+                  variant="purple"
+                  className="w-20 h-20 rounded-full text-sm font-bold font-mono"
+                />
+              </div>
+            </div>
+          )}
 
           <div className="bg-dark-800/50 px-3 py-2 border-t border-neon-blue/10">
             <div className="flex items-center justify-between mb-1.5">
