@@ -91,6 +91,7 @@
     "startSubtitle": "An adventure through my career path",
     "startButton": "Start Journey",
     "startHint": "Use ← → to move, ↑ to jump, ↓ to drop",
+    "jump": "JUMP",
     "playAgain": "↺ play again",
     "tryAgain": "↺ try again",
     "reset": "↺ reset",

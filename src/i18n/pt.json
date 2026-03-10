@@ -91,6 +91,7 @@
     "startSubtitle": "Uma aventura pela minha trajetória",
     "startButton": "Iniciar Jornada",
     "startHint": "Use ← → para mover, ↑ para pular, ↓ para descer",
+    "jump": "PULAR",
     "playAgain": "↺ jogar novamente",
     "tryAgain": "↺ tentar novamente",
     "reset": "↺ reset",

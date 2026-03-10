@@ -91,6 +91,7 @@
     "startSubtitle": "Una aventura por mi camino profesional",
     "startButton": "Iniciar Trayectoria",
     "startHint": "Usa ← → para mover, ↑ para saltar, ↓ para bajar",
+    "jump": "SALTAR",
     "playAgain": "↺ jugar de nuevo",
     "tryAgain": "↺ intentar de nuevo",
     "reset": "↺ reset",

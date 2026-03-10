@@ -359,10 +359,9 @@ export default function DeveloperJourney() {
                   <GamepadButton
                     onActivate={() => { touchRef.current.down = true; }}
                     onDeactivate={() => { touchRef.current.down = false; }}
-                    className="w-28 h-8 gap-1.5 opacity-50"
+                    className="w-28 h-8 opacity-50"
                   >
                     <IconDrop />
-                    <span className="text-[10px] font-mono">drop</span>
                   </GamepadButton>
                 </div>
 
@@ -374,7 +373,7 @@ export default function DeveloperJourney() {
                   className="w-20 h-20 rounded-full flex-col gap-0.5"
                 >
                   <IconJump />
-                  <span className="text-[10px] font-mono font-bold tracking-wider">JUMP</span>
+                  <span className="text-[10px] font-mono font-bold tracking-wider">{j.jump}</span>
                 </GamepadButton>
               </div>
             </div>
