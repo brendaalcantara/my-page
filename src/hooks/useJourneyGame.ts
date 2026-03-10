@@ -530,9 +530,10 @@ export function useJourneyGame() {
   }, [t]);
 
   const startGame = useCallback(() => {
+    resetGame(true);
     gameStartedRef.current = true;
     setGameStarted(true);
-  }, []);
+  }, [resetGame]);
 
   return {
     canvasRef,
