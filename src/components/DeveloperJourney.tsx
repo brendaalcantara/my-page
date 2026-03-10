@@ -6,37 +6,96 @@ import { levelIcons } from "./Icons";
 import { CANVAS_W, CANVAS_H, LEVELS } from "./game/gameLevels";
 import { FINALE_IDX, useJourneyGame } from "@/hooks/useJourneyGame";
 
+// ── SVG icons ──────────────────────────────────────────────────────────────
+
+function IconLeft() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M15 18l-6-6 6-6" />
+    </svg>
+  );
+}
+
+function IconRight() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 18l6-6-6-6" />
+    </svg>
+  );
+}
+
+function IconJump() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 19V5" />
+      <path d="M5 12l7-7 7 7" />
+    </svg>
+  );
+}
+
+function IconDrop() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 5v14" />
+      <path d="M5 12l7 7 7-7" />
+    </svg>
+  );
+}
+
+function IconChevronLeft() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M15 18l-6-6 6-6" />
+    </svg>
+  );
+}
+
+function IconChevronRight() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 18l6-6-6-6" />
+    </svg>
+  );
+}
+
+// ── Gamepad button ──────────────────────────────────────────────────────────
+
 function GamepadButton({
-  label,
+  children,
   onActivate,
   onDeactivate,
   variant = "blue",
   className = "",
+  disabled = false,
 }: {
-  label: string;
+  children: React.ReactNode;
   onActivate: () => void;
   onDeactivate: () => void;
   variant?: "blue" | "purple";
   className?: string;
+  disabled?: boolean;
 }) {
   const colors =
     variant === "purple"
-      ? "border-neon-purple/40 text-neon-purple bg-neon-purple/10 active:bg-neon-purple/30 shadow-[0_0_12px_rgba(168,85,247,0.2)]"
-      : "border-neon-blue/30 text-neon-blue bg-neon-blue/5 active:bg-neon-blue/20";
+      ? "border-neon-purple/50 text-neon-purple bg-neon-purple/15 active:bg-neon-purple/35 shadow-[0_0_14px_rgba(168,85,247,0.25)]"
+      : "border-neon-blue/40 text-neon-blue bg-neon-blue/10 active:bg-neon-blue/25";
   return (
     <button
-      className={`rounded-2xl backdrop-blur border ${colors} flex items-center justify-center select-none touch-none transition-transform active:scale-95 ${className}`}
+      disabled={disabled}
+      className={`rounded-2xl backdrop-blur border ${colors} flex items-center justify-center select-none touch-none transition-transform active:scale-90 disabled:opacity-20 ${className}`}
       onTouchStart={(e) => { e.preventDefault(); onActivate(); }}
-      onTouchEnd={onDeactivate}
-      onTouchCancel={onDeactivate}
+      onTouchEnd={(e) => { e.preventDefault(); onDeactivate(); }}
+      onTouchCancel={(e) => { e.preventDefault(); onDeactivate(); }}
       onMouseDown={(e) => { e.preventDefault(); onActivate(); }}
       onMouseUp={onDeactivate}
       onMouseLeave={onDeactivate}
     >
-      {label}
+      {children}
     </button>
   );
 }
+
+// ── Component ───────────────────────────────────────────────────────────────
 
 export default function DeveloperJourney() {
   const { t } = useLanguage();
@@ -56,6 +115,7 @@ export default function DeveloperJourney() {
   const level = t.journey.levels[currentLevel];
   const j = t.journey;
   const badgeLabels = (j.badgeLabels as string[]) || [];
+  const isPlaying = gameStarted && !gameOver && currentLevel !== FINALE_IDX;
 
   return (
     <section id="journey" className="py-20 relative">
@@ -80,6 +140,7 @@ export default function DeveloperJourney() {
           viewport={{ once: true }}
           tabIndex={0}
         >
+          {/* ── Header bar ── */}
           <div className="bg-dark-800/80 border-b border-neon-blue/10">
             <div className="px-3 py-2 flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -92,11 +153,9 @@ export default function DeveloperJourney() {
                   {j.terminalTitle || "developer-journey.exe"}
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono text-neon-blue">
-                  Level {currentLevel + 1}/{LEVELS.length}
-                </span>
-              </div>
+              <span className="text-[10px] font-mono text-neon-blue">
+                Level {currentLevel + 1}/{LEVELS.length}
+              </span>
             </div>
 
             <AnimatePresence mode="wait">
@@ -130,6 +189,7 @@ export default function DeveloperJourney() {
             </AnimatePresence>
           </div>
 
+          {/* ── Canvas ── */}
           <div className="relative w-full" style={{ aspectRatio: `${CANVAS_W} / ${CANVAS_H}` }}>
             <canvas
               ref={canvasRef}
@@ -190,30 +250,32 @@ export default function DeveloperJourney() {
               </div>
             )}
 
+            {/* Level nav arrows — desktop only (hidden on mobile, replaced by bar below) */}
             {currentLevel !== FINALE_IDX && (
-              <div className="absolute bottom-2 left-2 z-20 flex items-center gap-1">
+              <div className="absolute bottom-2 left-2 z-20 hidden sm:flex items-center gap-1">
                 <button
                   onClick={() => goToLevel(Math.max(0, currentLevel - 1))}
                   disabled={currentLevel === 0}
-                  className="w-10 h-10 rounded-xl bg-dark-800/80 backdrop-blur border border-foreground/15 text-foreground/60 hover:text-neon-blue hover:border-neon-blue/40 transition-all disabled:opacity-15 flex items-center justify-center text-base font-bold"
+                  className="w-9 h-9 rounded-xl bg-dark-800/80 backdrop-blur border border-foreground/15 text-foreground/60 hover:text-neon-blue hover:border-neon-blue/40 transition-all disabled:opacity-15 flex items-center justify-center"
                   title="Previous level"
                 >
-                  ◀
+                  <IconChevronLeft />
                 </button>
-                <span className="text-[9px] font-mono text-foreground/30 px-1 hidden sm:block">
+                <span className="text-[9px] font-mono text-foreground/30 px-1">
                   {currentLevel + 1}/{LEVELS.length}
                 </span>
                 <button
                   onClick={() => goToLevel(Math.min(FINALE_IDX, currentLevel + 1))}
                   disabled={currentLevel === FINALE_IDX}
-                  className="w-10 h-10 rounded-xl bg-dark-800/80 backdrop-blur border border-foreground/15 text-foreground/60 hover:text-neon-blue hover:border-neon-blue/40 transition-all disabled:opacity-15 flex items-center justify-center text-base font-bold"
+                  className="w-9 h-9 rounded-xl bg-dark-800/80 backdrop-blur border border-foreground/15 text-foreground/60 hover:text-neon-blue hover:border-neon-blue/40 transition-all disabled:opacity-15 flex items-center justify-center"
                   title="Next level"
                 >
-                  ▶
+                  <IconChevronRight />
                 </button>
               </div>
             )}
 
+            {/* Level selector dots — desktop sidebar */}
             {currentLevel !== FINALE_IDX && (
               <div className="absolute right-2 top-1/2 -translate-y-1/2 z-20 hidden sm:flex flex-col items-center gap-1">
                 {LEVELS.map((_, i) => (
@@ -233,52 +295,98 @@ export default function DeveloperJourney() {
             )}
           </div>
 
-          {currentLevel !== FINALE_IDX && gameStarted && !gameOver && (
-            <div className="md:hidden bg-dark-900/80 border-t border-neon-blue/10 px-5 py-4">
-              <div className="flex items-center justify-between max-w-xs mx-auto">
+          {/* ── Mobile: level navigation bar ── */}
+          {currentLevel !== FINALE_IDX && gameStarted && (
+            <div className="sm:hidden flex items-center justify-between bg-dark-900/70 border-t border-neon-blue/10 px-3 py-2 gap-2">
+              <button
+                onClick={() => goToLevel(Math.max(0, currentLevel - 1))}
+                disabled={currentLevel === 0}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-dark-800/80 border border-neon-blue/20 text-neon-blue disabled:opacity-20 disabled:border-foreground/10 disabled:text-foreground/30 transition-all active:scale-95 text-xs font-mono font-semibold"
+              >
+                <IconChevronLeft />
+                <span>Prev</span>
+              </button>
 
-                {/* Left thumb: movement */}
+              <div className="flex items-center gap-1.5 flex-1 justify-center">
+                {LEVELS.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => goToLevel(i)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      currentLevel === i
+                        ? "bg-neon-blue shadow-[0_0_6px_rgba(0,240,255,0.6)] scale-125"
+                        : "bg-foreground/20 hover:bg-foreground/40"
+                    }`}
+                    title={`Level ${i + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={() => goToLevel(Math.min(FINALE_IDX, currentLevel + 1))}
+                disabled={currentLevel === FINALE_IDX}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-dark-800/80 border border-neon-blue/20 text-neon-blue disabled:opacity-20 disabled:border-foreground/10 disabled:text-foreground/30 transition-all active:scale-95 text-xs font-mono font-semibold"
+              >
+                <span>Next</span>
+                <IconChevronRight />
+              </button>
+            </div>
+          )}
+
+          {/* ── Mobile: gamepad controls ── */}
+          {isPlaying && (
+            <div className="sm:hidden bg-dark-900/80 border-t border-neon-blue/10 px-5 py-4">
+              <div className="flex items-end justify-between max-w-xs mx-auto">
+
+                {/* Left thumb zone: move + drop */}
                 <div className="flex flex-col items-center gap-2">
                   <div className="flex gap-2">
                     <GamepadButton
-                      label="←"
                       onActivate={() => { touchRef.current.left = true; }}
                       onDeactivate={() => { touchRef.current.left = false; }}
-                      className="w-16 h-16 text-2xl"
-                    />
+                      className="w-16 h-16"
+                    >
+                      <IconLeft />
+                    </GamepadButton>
                     <GamepadButton
-                      label="→"
                       onActivate={() => { touchRef.current.right = true; }}
                       onDeactivate={() => { touchRef.current.right = false; }}
-                      className="w-16 h-16 text-2xl"
-                    />
+                      className="w-16 h-16"
+                    >
+                      <IconRight />
+                    </GamepadButton>
                   </div>
                   <GamepadButton
-                    label="↓  drop"
                     onActivate={() => { touchRef.current.down = true; }}
                     onDeactivate={() => { touchRef.current.down = false; }}
-                    className="w-24 h-9 text-xs font-mono opacity-50"
-                  />
+                    className="w-28 h-8 gap-1.5 opacity-50"
+                  >
+                    <IconDrop />
+                    <span className="text-[10px] font-mono">drop</span>
+                  </GamepadButton>
                 </div>
 
-                {/* Right thumb: jump */}
+                {/* Right thumb zone: jump */}
                 <GamepadButton
-                  label="JUMP"
+                  variant="purple"
                   onActivate={() => { touchRef.current.jump = true; }}
                   onDeactivate={() => { touchRef.current.jump = false; }}
-                  variant="purple"
-                  className="w-20 h-20 rounded-full text-sm font-bold font-mono"
-                />
+                  className="w-20 h-20 rounded-full flex-col gap-0.5"
+                >
+                  <IconJump />
+                  <span className="text-[10px] font-mono font-bold tracking-wider">JUMP</span>
+                </GamepadButton>
               </div>
             </div>
           )}
 
+          {/* ── Footer: badges + hints ── */}
           <div className="bg-dark-800/50 px-3 py-2 border-t border-neon-blue/10">
             <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[9px] font-mono text-foreground/25">
+              <span className="text-[9px] font-mono text-foreground/25 hidden sm:block">
                 ← → Move | ↑ Space Jump
               </span>
-              <span className="text-[9px] font-mono text-foreground/25">
+              <span className="text-[9px] font-mono text-foreground/25 hidden sm:block">
                 Walk to edges to change level
               </span>
             </div>
