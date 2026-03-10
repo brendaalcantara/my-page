@@ -39,9 +39,9 @@ export const CHAR_H = 130;
 export const CHAR_W = CHAR_H * SPRITE_ASPECT;
 
 // Physics
-export const GRAVITY = 0.45;
-export const RUN_SPEED = 5;
-export const JUMP_VEL = -10;
+export const GRAVITY = 0.55;
+export const RUN_SPEED = 6.5;
+export const JUMP_VEL = -12;
 
 // Animation timing
 export const ANIM_FRAMES: Record<AnimState, number> = {
@@ -74,7 +74,7 @@ export const BADGE_LABELS = [
 ];
 // Enemies
 export const ENEMY_SIZE = 44;
-export const ENEMY_SPEED = 1.8;
+export const ENEMY_SPEED = 2.2;
 export const ENEMY_DEATH_DURATION = 400; // ms until dead enemy fully fades
 
 // Combat
