@@ -251,7 +251,7 @@ export default function DeveloperJourney() {
             )}
 
             {/* Level nav arrows — desktop only (hidden on mobile, replaced by bar below) */}
-            {currentLevel !== FINALE_IDX && (
+            {currentLevel !== FINALE_IDX && gameStarted && (
               <div className="absolute bottom-2 left-2 z-20 hidden sm:flex items-center gap-1">
                 <button
                   onClick={() => goToLevel(Math.max(0, currentLevel - 1))}
@@ -276,7 +276,7 @@ export default function DeveloperJourney() {
             )}
 
             {/* Level selector dots — desktop sidebar */}
-            {currentLevel !== FINALE_IDX && (
+            {currentLevel !== FINALE_IDX && gameStarted && (
               <div className="absolute right-2 top-1/2 -translate-y-1/2 z-20 hidden sm:flex flex-col items-center gap-1">
                 {LEVELS.map((_, i) => (
                   <button
