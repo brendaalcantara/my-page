@@ -1,5 +1,7 @@
 "use client";
 
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { levelIcons } from "./Icons";
@@ -117,6 +119,32 @@ export default function DeveloperJourney() {
   const badgeLabels = (j.badgeLabels as string[]) || [];
   const isPlaying = gameStarted && !gameOver && currentLevel !== FINALE_IDX;
 
+  const [activeBadge, setActiveBadge] = useState<number | null>(null);
+  const [tooltipRect, setTooltipRect] = useState<{ top: number; left: number } | null>(null);
+  const badgeRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  useLayoutEffect(() => {
+    if (activeBadge === null) {
+      setTooltipRect(null);
+      return;
+    }
+    const el = badgeRefs.current[activeBadge];
+    if (el) {
+      const r = el.getBoundingClientRect();
+      setTooltipRect({ top: r.top, left: r.left + r.width / 2 });
+    }
+  }, [activeBadge]);
+
+  useEffect(() => {
+    if (activeBadge === null) return;
+    const close = () => setActiveBadge(null);
+    const t = setTimeout(() => document.addEventListener("click", close), 500);
+    return () => {
+      clearTimeout(t);
+      document.removeEventListener("click", close);
+    };
+  }, [activeBadge]);
+
   return (
     <section id="journey" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -197,6 +225,16 @@ export default function DeveloperJourney() {
               height={CANVAS_H}
               className="block w-full h-full"
               style={{ imageRendering: "pixelated" }}
+              role="img"
+              aria-label={
+                typeof j.canvasLabel === "string"
+                  ? j.canvasLabel
+                      .replace("{level}", String(currentLevel + 1))
+                      .replace("{total}", String(LEVELS.length))
+                      .replace("{title}", level.title)
+                  : `Platform game, level ${currentLevel + 1} of ${LEVELS.length}: ${level.title}`
+              }
+              aria-describedby="journey-keyboard-hints"
             />
 
             <AnimatePresence>
@@ -257,7 +295,8 @@ export default function DeveloperJourney() {
                   onClick={() => goToLevel(Math.max(0, currentLevel - 1))}
                   disabled={currentLevel === 0}
                   className="w-9 h-9 rounded-xl bg-dark-800/80 backdrop-blur border border-foreground/15 text-foreground/60 hover:text-neon-blue hover:border-neon-blue/40 transition-all disabled:opacity-15 flex items-center justify-center"
-                  title="Previous level"
+                  aria-label={j.prevLevel}
+                  title={j.prevLevel}
                 >
                   <IconChevronLeft />
                 </button>
@@ -268,7 +307,8 @@ export default function DeveloperJourney() {
                   onClick={() => goToLevel(Math.min(FINALE_IDX, currentLevel + 1))}
                   disabled={currentLevel === FINALE_IDX}
                   className="w-9 h-9 rounded-xl bg-dark-800/80 backdrop-blur border border-foreground/15 text-foreground/60 hover:text-neon-blue hover:border-neon-blue/40 transition-all disabled:opacity-15 flex items-center justify-center"
-                  title="Next level"
+                  aria-label={j.nextLevel}
+                  title={j.nextLevel}
                 >
                   <IconChevronRight />
                 </button>
@@ -282,6 +322,7 @@ export default function DeveloperJourney() {
                   <button
                     key={i}
                     onClick={() => goToLevel(i)}
+                    aria-label={typeof j.levelN === "string" ? j.levelN.replace("{n}", String(i + 1)) : `Level ${i + 1}`}
                     className={`w-7 h-7 rounded text-[10px] font-mono font-bold transition-all ${
                       currentLevel === i
                         ? "bg-neon-blue/20 text-neon-blue border border-neon-blue/40 shadow-[0_0_8px_rgba(0,240,255,0.3)]"
@@ -301,10 +342,11 @@ export default function DeveloperJourney() {
               <button
                 onClick={() => goToLevel(Math.max(0, currentLevel - 1))}
                 disabled={currentLevel === 0}
+                aria-label={j.prevLevel}
                 className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-dark-800/80 border border-neon-blue/20 text-neon-blue disabled:opacity-20 disabled:border-foreground/10 disabled:text-foreground/30 transition-all active:scale-95 text-xs font-mono font-semibold"
               >
                 <IconChevronLeft />
-                <span>Prev</span>
+                <span>{j.prevShort ?? j.prevLevel}</span>
               </button>
 
               <div className="flex items-center gap-1.5 flex-1 justify-center">
@@ -317,7 +359,8 @@ export default function DeveloperJourney() {
                         ? "bg-neon-blue shadow-[0_0_6px_rgba(0,240,255,0.6)] scale-125"
                         : "bg-foreground/20 hover:bg-foreground/40"
                     }`}
-                    title={`Level ${i + 1}`}
+                    title={typeof j.levelN === "string" ? j.levelN.replace("{n}", String(i + 1)) : `Level ${i + 1}`}
+                    aria-label={typeof j.levelN === "string" ? j.levelN.replace("{n}", String(i + 1)) : `Level ${i + 1}`}
                   />
                 ))}
               </div>
@@ -325,9 +368,10 @@ export default function DeveloperJourney() {
               <button
                 onClick={() => goToLevel(Math.min(FINALE_IDX, currentLevel + 1))}
                 disabled={currentLevel === FINALE_IDX}
+                aria-label={j.nextLevel}
                 className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-dark-800/80 border border-neon-blue/20 text-neon-blue disabled:opacity-20 disabled:border-foreground/10 disabled:text-foreground/30 transition-all active:scale-95 text-xs font-mono font-semibold"
               >
-                <span>Next</span>
+                <span>{j.nextShort ?? j.nextLevel}</span>
                 <IconChevronRight />
               </button>
             </div>
@@ -381,31 +425,43 @@ export default function DeveloperJourney() {
 
           {/* ── Footer: badges + hints ── */}
           <div className="bg-dark-800/50 px-3 py-2 border-t border-neon-blue/10">
-            <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[9px] font-mono text-foreground/25 hidden sm:block">
-                ← → Move | ↑ Space Jump
+            <div id="journey-keyboard-hints" className="flex items-center justify-between mb-1.5">
+              <span className="text-[9px] font-mono text-foreground/50 hidden sm:block">
+                {j.keyboardHints}
               </span>
-              <span className="text-[9px] font-mono text-foreground/25 hidden sm:block">
-                Walk to edges to change level
+              <span className="text-[9px] font-mono text-foreground/50 hidden sm:block">
+                {j.walkToEdges}
               </span>
             </div>
             <div className="flex items-center gap-1 justify-center flex-wrap">
               {badgeLabels.map((label, i) => {
                 const collected = collectedBadges.has(i);
+                const isActive = activeBadge === i;
                 return (
                   <div key={i} className="group relative">
-                    <div
-                      className={`w-7 h-7 rounded-full border-2 flex items-center justify-center text-[9px] font-mono font-bold transition-all ${
+                    <button
+                      ref={(el) => { badgeRefs.current[i] = el; }}
+                      type="button"
+                      aria-label={label}
+                      aria-describedby={isActive ? `badge-tooltip-${i}` : undefined}
+                      onPointerDown={(e) => {
+                        e.stopPropagation();
+                        setActiveBadge(isActive ? null : i);
+                      }}
+                      onClick={(e) => e.stopPropagation()}
+                      className={`w-7 h-7 rounded-full border-2 flex items-center justify-center text-[9px] font-mono font-bold transition-all touch-manipulation ${
                         collected
                           ? "border-neon-blue bg-neon-blue/15 text-neon-blue shadow-[0_0_8px_rgba(0,240,255,0.4)]"
                           : "border-foreground/10 bg-dark-900/50 text-foreground/15"
                       }`}
                     >
                       {collected ? "✓" : i + 1}
-                    </div>
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-dark-800 border border-neon-blue/20 rounded text-[8px] font-mono text-foreground/60 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-30">
-                      {label}
-                    </div>
+                    </button>
+                    {!isActive && (
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-dark-800 border border-neon-blue/20 rounded text-[8px] font-mono text-foreground/60 whitespace-nowrap pointer-events-none z-30 opacity-0 sm:group-hover:opacity-100 transition-opacity">
+                        {label}
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -413,11 +469,30 @@ export default function DeveloperJourney() {
                 {collectedBadges.size}/{badgeLabels.length}
               </span>
             </div>
+            {activeBadge !== null &&
+              tooltipRect &&
+              typeof document !== "undefined" &&
+              createPortal(
+                <div
+                  id={`badge-tooltip-${activeBadge}`}
+                  role="tooltip"
+                  className="fixed px-2 py-1 bg-dark-800 border border-neon-blue/20 rounded text-[8px] font-mono text-foreground/60 whitespace-nowrap z-[9999] shadow-lg"
+                  style={{
+                    left: tooltipRect.left,
+                    top: Math.max(8, tooltipRect.top - 4),
+                    transform: "translate(-50%, -100%)",
+                  }}
+                >
+                  {badgeLabels[activeBadge]}
+                </div>,
+                document.body
+              )}
             <div className="flex justify-end mt-1">
               <button
                 onClick={() => resetGame(true)}
-                className="text-[9px] font-mono text-foreground/20 hover:text-red-400 border border-transparent hover:border-red-400/30 rounded px-1.5 py-0.5 transition-all"
-                title="Reset game"
+                className="text-[9px] font-mono text-foreground/50 hover:text-red-400 border border-transparent hover:border-red-400/30 rounded px-1.5 py-0.5 transition-all"
+                title={j.resetGame}
+                aria-label={j.resetGame}
               >
                 {j.reset}
               </button>
