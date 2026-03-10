@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback, ReactNode } from "react";
+import { MotionConfig } from "framer-motion";
 import pt from "./pt.json";
 import es from "./es.json";
 import en from "./en.json";
@@ -38,9 +39,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const t = translations[locale];
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, t }}>
-      {children}
-    </LanguageContext.Provider>
+    <MotionConfig reducedMotion="user">
+      <LanguageContext.Provider value={{ locale, setLocale, t }}>
+        {children}
+      </LanguageContext.Provider>
+    </MotionConfig>
   );
 }
 
