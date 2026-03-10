@@ -23,6 +23,7 @@ import {
   STOMP_BOUNCE_FACTOR,
   BADGE_HEAL_HP,
   MAX_FRAME_DT,
+  TARGET_FRAME_MS,
   LEVELS,
   spawnEnemies,
 } from "@/components/game/gameLevels";
@@ -255,10 +256,10 @@ export function useJourneyGame() {
       }
     }
 
-    function applyPhysics(p: PlayerState, lvl: (typeof LEVELS)[number], groundY: number) {
-      p.vy += GRAVITY;
-      p.x += p.vx;
-      p.y += p.vy;
+    function applyPhysics(p: PlayerState, lvl: (typeof LEVELS)[number], groundY: number, scale: number) {
+      p.vy += GRAVITY * scale;
+      p.x += p.vx * scale;
+      p.y += p.vy * scale;
       const keys = keysRef.current;
       const isDropping = keys.has("ArrowDown") || keys.has("s") || keys.has("S") || touchRef.current.down;
       p.grounded = false;
@@ -296,10 +297,10 @@ export function useJourneyGame() {
       if (p.frameTimer >= spd) { p.frameTimer -= spd; p.frame = (p.frame + 1) % ANIM_FRAMES[p.anim]; }
     }
 
-    function updateAndRenderEnemies(p: PlayerState, lvl: (typeof LEVELS)[number], groundY: number, time: number, dt: number) {
+    function updateAndRenderEnemies(p: PlayerState, lvl: (typeof LEVELS)[number], groundY: number, time: number, dt: number, scale: number) {
       for (const enemy of enemiesRef.current) {
         if (enemy.alive) {
-          enemy.x += enemy.vx;
+          enemy.x += enemy.vx * scale;
           if (enemy.x <= enemy.patrolMin || enemy.x >= enemy.patrolMax - ENEMY_SIZE) {
             enemy.vx *= -1;
             enemy.x = Math.max(enemy.patrolMin, Math.min(enemy.x, enemy.patrolMax - ENEMY_SIZE));
@@ -405,8 +406,9 @@ export function useJourneyGame() {
     // --- Game loop ---
 
     const gameLoop = (time: number) => {
-      const dt = lastTimeRef.current ? Math.min(time - lastTimeRef.current, MAX_FRAME_DT) : MAX_FRAME_DT / 2;
+      const dt = lastTimeRef.current ? Math.min(time - lastTimeRef.current, MAX_FRAME_DT) : TARGET_FRAME_MS;
       lastTimeRef.current = time;
+      const scale = dt / TARGET_FRAME_MS;
 
       const lvl = LEVELS[levelRef.current];
       const groundY = H - H * lvl.groundPct;
@@ -427,7 +429,7 @@ export function useJourneyGame() {
       }
 
       applyInput(p, groundY, transitionRef.current);
-      applyPhysics(p, lvl, groundY);
+      applyPhysics(p, lvl, groundY, scale);
 
       const isLastBadgeLevel = curLvl === FINALE_LEVEL - 1;
       const hasLastBadge = collectedRef.current.has(FINALE_LEVEL - 1);
@@ -456,7 +458,7 @@ export function useJourneyGame() {
       if (curLvl !== FINALE_LEVEL) {
         drawAllPlatforms(ctx, floorRef.current, lvl, groundY, W);
         if (p.invincible > 0) p.invincible = Math.max(0, p.invincible - dt);
-        updateAndRenderEnemies(p, lvl, groundY, time, dt);
+        updateAndRenderEnemies(p, lvl, groundY, time, dt, scale);
         updateAndRenderBadge(p, lvl, groundY, time);
         drawCollectFx(ctx, collectFxRef.current, dt);
         drawPlayer(ctx, spriteFramesRef.current, p);

@@ -90,6 +90,7 @@ export const FLOOR_TILE_H = 50;         // ground floor tile height in px
 export const PLAT_TILE_H = 35;          // raised platform tile height in px
 export const COLLECT_FX_DURATION = 600; // badge collect ripple animation duration ms
 export const MAX_FRAME_DT = 32;         // max delta-time cap per frame in ms
+export const TARGET_FRAME_MS = 1000 / 60; // physics designed for 60fps — used to normalise dt
 
 export const LEVELS: { bg: string; groundPct: number; platforms: Platform[]; badgePlatformIdx?: number }[] = [
   { bg: "/images/city-1.png", groundPct: 0.04, badgePlatformIdx: 1, platforms: [
