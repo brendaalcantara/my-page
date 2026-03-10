@@ -172,7 +172,7 @@ export default function DeveloperJourney() {
                     {(() => { const Icon = levelIcons[currentLevel]; return Icon ? <Icon size={22} /> : null; })()}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-0.5">
+                    <div className="flex items-center gap-2 mb-1">
                       <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold rounded bg-neon-purple/15 text-neon-purple border border-neon-purple/25 tracking-wider uppercase">
                         {level.level}/{LEVELS.length}
                       </span>
@@ -180,7 +180,7 @@ export default function DeveloperJourney() {
                         {level.title}
                       </h3>
                     </div>
-                    <p className="text-foreground/50 text-[11px] sm:text-xs leading-relaxed line-clamp-2">
+                    <p className="sm:line-clamp-2 text-[11px] sm:text-xs leading-relaxed border-l-2 border-neon-blue/30 pl-2 text-foreground/70">
                       {level.description}
                     </p>
                   </div>

@@ -92,6 +92,7 @@ export function useJourneyGame() {
   // Refs for cleanup of transition timers on unmount (#1)
   const outerTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const innerTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const levelEnemyStatesRef = useRef<Map<number, LiveEnemy[]>>(new Map());
 
   const [collectedBadges, setCollectedBadges] = useState<Set<number>>(() => {
     try {
@@ -165,6 +166,11 @@ export function useJourneyGame() {
     transitionRef.current = true;
     setTransitioning(true);
     outerTimerRef.current = setTimeout(() => {
+      // Save current level's enemy state before leaving
+      levelEnemyStatesRef.current.set(
+        levelRef.current,
+        enemiesRef.current.map(e => ({ ...e })),
+      );
       levelRef.current = idx;
       setCurrentLevel(idx);
       const p = playerRef.current;
@@ -173,7 +179,9 @@ export function useJourneyGame() {
       p.vy = 0;
       p.grounded = false;
       p.invincible = 0;
-      enemiesRef.current = spawnEnemies(idx, CANVAS_W);
+      // Restore saved enemy state or spawn fresh
+      const saved = levelEnemyStatesRef.current.get(idx);
+      enemiesRef.current = saved ? saved.map(e => ({ ...e })) : spawnEnemies(idx, CANVAS_W);
       innerTimerRef.current = setTimeout(() => {
         transitionRef.current = false;
         setTransitioning(false);
@@ -210,15 +218,14 @@ export function useJourneyGame() {
     };
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("keyup", onKeyUp);
+    // mouseup only — each touch button handles its own touchend/touchcancel
+    // so the global touchend is intentionally removed to avoid clearing
+    // movement controls when the jump button is released mid-air
     window.addEventListener("mouseup", resetTouch);
-    window.addEventListener("touchend", resetTouch);
-    window.addEventListener("touchcancel", resetTouch);
     return () => {
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("keyup", onKeyUp);
       window.removeEventListener("mouseup", resetTouch);
-      window.removeEventListener("touchend", resetTouch);
-      window.removeEventListener("touchcancel", resetTouch);
     };
   }, []);
 
@@ -434,7 +441,7 @@ export function useJourneyGame() {
       const isLastBadgeLevel = curLvl === FINALE_LEVEL - 1;
       const hasLastBadge = collectedRef.current.has(FINALE_LEVEL - 1);
       if (p.x < -CHAR_W * 0.6 && !transitionRef.current) {
-        if (curLvl > 0) changeLevel(-1);
+        if (curLvl > 0 && curLvl !== FINALE_LEVEL) changeLevel(-1);
       } else if (p.x > W - CHAR_W * 0.4 && !transitionRef.current) {
         if (isLastBadgeLevel && !hasLastBadge) {
           p.x = W - CHAR_W * 0.4;
@@ -505,6 +512,7 @@ export function useJourneyGame() {
     p.invincible = 0;
     transitionRef.current = false;
     setTransitioning(false);
+    levelEnemyStatesRef.current = new Map();
     enemiesRef.current = spawnEnemies(0, CANVAS_W);
   }, []);
 
@@ -530,10 +538,9 @@ export function useJourneyGame() {
   }, [t]);
 
   const startGame = useCallback(() => {
-    resetGame(true);
     gameStartedRef.current = true;
     setGameStarted(true);
-  }, [resetGame]);
+  }, []);
 
   return {
     canvasRef,

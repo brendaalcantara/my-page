@@ -774,20 +774,24 @@ export function drawBackground(
   bgImg: HTMLImageElement | null,
   W: number, H: number,
 ) {
-  if (bgImg) {
-    const imgAspect = bgImg.width / bgImg.height;
-    const canAspect = W / H;
-    let dw: number, dh: number, dx: number, dy: number;
-    if (imgAspect > canAspect) {
-      dh = H; dw = H * imgAspect; dx = (W - dw) / 2; dy = 0;
-    } else {
-      dw = W; dh = W / imgAspect; dx = 0; dy = H - dh;
-    }
-    ctx.drawImage(bgImg, dx, dy, dw, dh);
+  ctx.fillStyle = "#0a0a0f";
+  ctx.fillRect(0, 0, W, H);
+  if (!bgImg) return;
+  // Use naturalWidth/naturalHeight — .width/.height can return 0 before layout
+  const nw = bgImg.naturalWidth;
+  const nh = bgImg.naturalHeight;
+  if (!nw || !nh) return;
+  const imgAspect = nw / nh;
+  const canAspect = W / H;
+  let dw: number, dh: number, dx: number, dy: number;
+  if (imgAspect > canAspect) {
+    // Image wider than canvas: scale to fill height, center horizontally
+    dh = H; dw = H * imgAspect; dx = (W - dw) / 2; dy = 0;
   } else {
-    ctx.fillStyle = "#0a0a0f";
-    ctx.fillRect(0, 0, W, H);
+    // Image taller than canvas: scale to fill width, anchor to bottom
+    dw = W; dh = W / imgAspect; dx = 0; dy = H - dh;
   }
+  ctx.drawImage(bgImg, dx, dy, dw, dh);
 }
 
 function drawPlatformTiles(
@@ -806,6 +810,7 @@ function drawPlatformTiles(
   const midW = h * midAspect;
   const midStart = platX + edgeWL;
   const midEnd = platX + platW - edgeWR;
+  if (midW <= 0 || midStart >= midEnd) return;
   let mx = midStart;
   while (mx < midEnd) {
     const drawW = Math.min(midW, midEnd - mx);
