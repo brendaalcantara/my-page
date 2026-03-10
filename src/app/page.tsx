@@ -47,9 +47,15 @@ export default function Home() {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="skip-link"
+      >
+        {t.nav.skipToContent}
+      </a>
       <Header onDevMode={() => setTerminalOpen(true)} />
 
-      <main>
+      <main id="main-content">
         <Hero />
         <DeveloperJourney />
         <TechStack />

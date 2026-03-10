@@ -8,7 +8,8 @@
     "contact": "Contacto",
     "devMode": "Dev Mode",
     "ariaLabel": "Navegación principal",
-    "menuLabel": "Abrir menú"
+    "menuLabel": "Abrir menú",
+    "skipToContent": "Saltar al contenido principal"
   },
   "hero": {
     "headline": "Brenda Bispo // Backend Software Developer",
@@ -95,6 +96,15 @@
     "playAgain": "↺ jugar de nuevo",
     "tryAgain": "↺ intentar de nuevo",
     "reset": "↺ reset",
+    "prevLevel": "Nivel anterior",
+    "prevShort": "Ant",
+    "nextLevel": "Siguiente nivel",
+    "nextShort": "Sig",
+    "resetGame": "Reiniciar juego",
+    "levelN": "Nivel {n}",
+    "keyboardHints": "← → Mover | ↑ Espacio Saltar",
+    "walkToEdges": "Camina a los bordes para cambiar de nivel",
+    "canvasLabel": "Juego de plataformas, nivel {level} de {total}: {title}",
     "terminalTitle": "developer-journey.exe",
     "enemies": {
       "daydream": "TDAH: cabeza en la luna",
@@ -203,6 +213,7 @@
     "welcome": "¡Bienvenida al Dev Mode! Escribe 'help' para ver los comandos disponibles.",
     "prompt": "brenda@portfolio",
     "closeLabel": "Cerrar terminal",
+    "inputLabel": "Escribir un comando",
     "bash": "bash",
     "commands": {
       "help": "Comandos disponibles:\n  help      - Muestra este mensaje\n  about     - Sobre mí\n  projects  - Mis proyectos\n  skills    - Mis habilidades\n  contact   - Información de contacto\n  clear     - Limpiar terminal",
