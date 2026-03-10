@@ -85,7 +85,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                ▶ {t.hero.playJourney}
+                {t.hero.playJourney}
               </motion.button>
             </div>
 
