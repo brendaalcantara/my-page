@@ -23,14 +23,50 @@ export default function Terminal({
   const [historyIdx, setHistoryIdx] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const prevActiveRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (isOpen) {
+      prevActiveRef.current = document.activeElement as HTMLElement | null;
       // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: reset terminal content when opened
       setLines([{ type: "output", content: t.terminal.welcome }]);
       setTimeout(() => inputRef.current?.focus(), 100);
+    } else if (prevActiveRef.current) {
+      prevActiveRef.current.focus();
+      prevActiveRef.current = null;
     }
   }, [isOpen, t.terminal.welcome]);
+
+  const handleClose = useCallback(() => onClose(), [onClose]);
+
+  useEffect(() => {
+    if (!isOpen || !dialogRef.current) return;
+    const dialog = dialogRef.current;
+    const focusables = dialog.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last?.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first?.focus();
+        }
+      }
+    };
+
+    dialog.addEventListener("keydown", handleKeyDown);
+    return () => dialog.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
 
   useEffect(() => {
     if (outputRef.current) {
@@ -88,7 +124,7 @@ export default function Terminal({
         setInput("");
       }
     } else if (e.key === "Escape") {
-      onClose();
+      handleClose();
     }
   };
 
@@ -103,10 +139,14 @@ export default function Terminal({
         >
           <div
             className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-            onClick={onClose}
+            onClick={handleClose}
           />
 
           <motion.div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="terminal-title"
             className="relative w-full max-w-3xl max-h-[80vh] terminal-screen rounded-xl overflow-hidden shadow-2xl shadow-neon-blue/10"
             initial={{ scale: 0.9, y: 40 }}
             animate={{ scale: 1, y: 0 }}
@@ -116,19 +156,19 @@ export default function Terminal({
               <div className="flex items-center gap-2">
                 <div className="flex gap-1.5">
                   <button
-                    onClick={onClose}
+                    onClick={handleClose}
                     aria-label={t.terminal.closeLabel}
                     className="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors"
                   />
                   <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                   <div className="w-3 h-3 rounded-full bg-green-500/80" />
                 </div>
-                <span className="text-xs font-mono text-foreground/40 ml-3">
+                <span id="terminal-title" className="text-xs font-mono text-foreground/40 ml-3">
                   {t.terminal.prompt} — {t.terminal.bash}
                 </span>
               </div>
               <button
-                onClick={onClose}
+                onClick={handleClose}
                 className="text-foreground/40 hover:text-foreground/80 text-xs font-mono"
               >
                 [ESC]
@@ -169,6 +209,7 @@ export default function Terminal({
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
+                  aria-label={t.terminal.inputLabel}
                   className="flex-1 bg-transparent text-foreground/90 font-mono text-sm outline-none caret-neon-blue"
                   autoFocus
                   spellCheck={false}
