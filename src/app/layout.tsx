@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { cookies } from "next/headers";
+import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { Orbitron, JetBrains_Mono, Inter } from "next/font/google";
 
@@ -83,6 +84,7 @@ export default async function RootLayout({
     >
       <body className="antialiased">
         <LanguageProvider>{children}</LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
