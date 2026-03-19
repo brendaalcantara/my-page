@@ -3,7 +3,7 @@
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { GamepadIcon, PhoneIcon, HeartPulseIcon } from "./Icons";
+import { GamepadIcon, PhoneIcon, HeartPulseIcon, BrainIcon } from "./Icons";
 
 interface Tag {
   label: string;
@@ -79,6 +79,7 @@ function ProjectCard({
 export default function Projects() {
   const { t } = useLanguage();
   const project3 = t.projects.project3;
+  const project4 = t.projects.project4;
 
   return (
     <section id="projects" className="py-20 relative">
@@ -200,6 +201,48 @@ export default function Projects() {
                   className="text-xs font-mono text-neon-purple hover:text-neon-blue transition-colors"
                 >
                   {project3.status} ↗
+                </a>
+              }
+            />
+          )}
+
+          {project4 && (
+            <ProjectCard
+              delay={0.3}
+              media={
+                <a
+                  href="https://github.com/brendaalcantara/gambling-detector"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="aspect-video bg-dark-800 flex items-center justify-center relative overflow-hidden block group/link"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/10 to-neon-purple/10 group-hover/link:from-neon-blue/20 group-hover/link:to-neon-purple/20 transition-all" />
+                  <div className="text-center z-10 flex flex-col items-center">
+                    <div className="mb-3 text-foreground/50"><BrainIcon size={48} /></div>
+                    <span className="font-display text-sm text-neon-blue font-semibold">{project4.title}</span>
+                    <span className="block text-[10px] font-mono text-foreground/40 mt-1">github.com/brendaalcantara/gambling-detector ↗</span>
+                  </div>
+                </a>
+              }
+              Icon={<BrainIcon size={22} />}
+              title={project4.title}
+              description={project4.description}
+              labelText="Purpose"
+              labelColor="blue"
+              detail={project4.purpose}
+              tags={[
+                { label: "Python", color: "blue" },
+                { label: "TensorFlow", color: "purple" },
+                { label: "TFLite", color: "blue" },
+              ]}
+              action={
+                <a
+                  href="https://github.com/brendaalcantara/gambling-detector"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-mono text-neon-green hover:text-neon-blue transition-colors"
+                >
+                  {project4.status} ↗
                 </a>
               }
             />

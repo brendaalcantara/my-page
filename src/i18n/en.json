@@ -177,6 +177,13 @@
       "description": "Health and technology walking together.",
       "purpose": "Helping patients with chronic rheumatological diseases manage their daily treatment, and in the future enabling doctors to track patient progress.",
       "status": "In development"
+    },
+    "project4": {
+      "title": "Gambling Domain Classifier",
+      "description": "Open-source ML classifier for gambling domain detection.",
+      "purpose": "Classify domains as gambling vs. safe — useful for DNS filters, parental controls, and browser extensions.",
+      "tech": "Conv1D + Focal Loss, TFLite export (~1–3 MB) for on-device inference.",
+      "status": "Open source"
     }
   },
   "stats": {

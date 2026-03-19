@@ -177,6 +177,13 @@
       "description": "Saúde e tecnologia caminhando juntas.",
       "purpose": "Auxiliar pacientes de doenças crônicas reumatológicas no dia a dia do tratamento e, futuramente, permitir que médicos acompanhem a evolução dos pacientes.",
       "status": "Em desenvolvimento"
+    },
+    "project4": {
+      "title": "Gambling Domain Classifier",
+      "description": "Classificador ML open-source para detecção de domínios de apostas.",
+      "purpose": "Classificar domínios como apostas vs. seguros — útil para filtros DNS, controle parental e extensões de navegador.",
+      "tech": "Conv1D + Focal Loss, export TFLite (~1–3 MB) para inferência on-device.",
+      "status": "Open source"
     }
   },
   "stats": {

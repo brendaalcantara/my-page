@@ -290,6 +290,19 @@ export function HeartPulseIcon({ size = 24, className }: IconProps) {
   );
 }
 
+export function BrainIcon({ size = 24, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+      <circle cx="8" cy="10" r="2.5" stroke="var(--color-neon-blue)" strokeWidth="1.5" />
+      <circle cx="16" cy="10" r="2.5" stroke="var(--color-neon-blue)" strokeWidth="1.5" />
+      <circle cx="12" cy="16" r="2.5" stroke="var(--color-neon-purple)" strokeWidth="1.5" />
+      <path d="M10 11L11.5 14L14 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M10.5 12L12 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M13.5 12L12 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export const levelIcons = [
   HouseIcon, GraduationCapIcon, UniversityIcon, GamepadIcon, TerminalIcon,
   RocketIcon, GearIcon, CartIcon, PhoneIcon, StarIcon,
