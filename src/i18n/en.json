@@ -127,7 +127,7 @@
     }
   },
   "experience": {
-    "title": "Backend Engineer – Mercado Livre (3+ years)",
+    "title": "Backend Engineer – Mercado Livre (4 years)",
     "achievementUnlocked": "Achievement Unlocked",
     "intro": "Helping build resilient, scalable systems that impact millions of users daily.",
     "achievements": [
@@ -141,7 +141,7 @@
       },
       {
         "title": "Mentorship & Quality",
-        "description": "Over 121 PR Reviews focused on security, performance, and maintainability."
+        "description": "295 PR Reviews focused on security, performance, and maintainability."
       },
       {
         "title": "Safe Rollouts",
@@ -170,7 +170,10 @@
       "title": "AntiBet Alerta",
       "description": "Android app focused on social impact.",
       "purpose": "Detecting gambling websites and sending alerts to help fight addiction.",
-      "status": "Coming soon"
+      "status": "Available on Google Play",
+      "site": "Website",
+      "playStore": "Google Play",
+      "imageAlt": "AntiBet Alerta preview showing its intervention screen."
     },
     "project3": {
       "title": "Liv+",
@@ -184,6 +187,13 @@
       "purpose": "Classify domains as gambling vs. safe — useful for DNS filters, parental controls, and browser extensions.",
       "tech": "Conv1D + Focal Loss, TFLite export (~1–3 MB) for on-device inference.",
       "status": "Open source"
+    },
+    "project5": {
+      "title": "Tese Guiada",
+      "description": "A cultural-reference and argument-building platform for ENEM essays.",
+      "purpose": "Helping students practice with more direction by connecting references, topics, and argument construction.",
+      "status": "Visit platform",
+      "imageAlt": "Tese Guiada platform logo."
     }
   },
   "stats": {
@@ -224,8 +234,8 @@
     "bash": "bash",
     "commands": {
       "help": "Available commands:\n  help      - Show this message\n  about     - About me\n  projects  - My projects\n  skills    - My skills\n  contact   - Contact info\n  clear     - Clear terminal",
-      "about": "Backend Software Developer at Mercado Livre.\nFrom Itagimirim, Bahia, Brazil.\n3+ years building scalable systems for millions of users.\n154+ PRs created | 121+ PR Reviews | 76 repos contributed.\nCollaborating daily with distributed teams across Latin America.",
-      "projects": "1. Patógenos Bioecológicos - Educational game (Kotlin)\n2. AntiBet Alerta - Android app against gambling addiction (Kotlin)\n3. Liv+ - App for chronic rheumatological disease patients (Kotlin) [in dev]\n\nBeyond work, I use personal projects to explore new technologies.",
+      "about": "Backend Software Developer at Mercado Livre.\nFrom Itagimirim, Bahia, Brazil.\n4 years building scalable systems for millions of users.\n217 PRs created | 295 PR Reviews | 76 repos contributed.\nCollaborating daily with distributed teams across Latin America.",
+      "projects": "1. Patógenos Bioecológicos - Educational game (Kotlin)\n2. AntiBet Alerta - Android app against gambling addiction (Kotlin)\n3. Liv+ - App for chronic rheumatological disease patients (Kotlin) [in dev]\n4. Tese Guiada - ENEM essay platform\n\nBeyond work, I use personal projects to explore new technologies.",
       "skills": "Backend Core: Java (85%) | Kotlin (70%) | System Design (60%) | Distributed Systems (60%)\nArchitecture & Platform: Spring Boot (85%) | Microservices (70%) | REST APIs (90%) | Event-driven (60%)\nQuality & Operations: Observability (75%) | Testing (80%) | Code Review (80%) | Security (60%)",
       "contact": "LinkedIn: linkedin.com/in/brendabispo\nGitHub: github.com/brendaalcantara\nEmail: brendaalcantarabba@gmail.com",
       "unknown": "Command not recognized. Type 'help' to see available commands."

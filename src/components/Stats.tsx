@@ -53,9 +53,9 @@ type StatKey = "yearsCoding" | "yearsMeli" | "prsCreated" | "prReviews" | "repos
 
 const statsData: { key: StatKey; value: number; suffix: string; Icon: StatIcon; display?: string }[] = [
   { key: "yearsCoding", value: 5, suffix: "+", Icon: statsIcons[0] },
-  { key: "yearsMeli", value: 3, suffix: "+", Icon: statsIcons[1] },
-  { key: "prsCreated", value: 154, suffix: "+", Icon: statsIcons[2] },
-  { key: "prReviews", value: 121, suffix: "+", Icon: statsIcons[3] },
+  { key: "yearsMeli", value: 4, suffix: "", Icon: statsIcons[1] },
+  { key: "prsCreated", value: 217, suffix: "", Icon: statsIcons[2] },
+  { key: "prReviews", value: 295, suffix: "", Icon: statsIcons[3] },
   { key: "repos", value: 76, suffix: "", Icon: statsIcons[4] },
   { key: "systemsSupported", value: 0, suffix: "", Icon: statsIcons[5], display: "M+" },
   { key: "onCall", value: 0, suffix: "", Icon: statsIcons[6], display: "✓" },

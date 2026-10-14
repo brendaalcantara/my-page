@@ -127,7 +127,7 @@
     }
   },
   "experience": {
-    "title": "Ingeniera Backend – Mercado Libre (3+ años)",
+    "title": "Ingeniera Backend – Mercado Libre (4 años)",
     "achievementUnlocked": "Logro Desbloqueado",
     "intro": "Ayudando a construir sistemas resilientes y escalables que impactan a millones de usuarios diariamente.",
     "achievements": [
@@ -141,7 +141,7 @@
       },
       {
         "title": "Mentoría y Calidad",
-        "description": "Más de 121 PR Reviews enfocados en seguridad, performance y mantenibilidad."
+        "description": "295 PR Reviews enfocados en seguridad, performance y mantenibilidad."
       },
       {
         "title": "Rollouts Seguros",
@@ -170,7 +170,10 @@
       "title": "AntiBet Alerta",
       "description": "App Android enfocada en impacto social.",
       "purpose": "Detectar sitios de apuestas y enviar alertas para ayudar en el combate a la adicción.",
-      "status": "Próximamente"
+      "status": "Disponible en Google Play",
+      "site": "Sitio",
+      "playStore": "Google Play",
+      "imageAlt": "Vista previa de AntiBet Alerta con su pantalla de intervención."
     },
     "project3": {
       "title": "Liv+",
@@ -184,6 +187,13 @@
       "purpose": "Clasificar dominios como apuestas vs. seguros — útil para filtros DNS, control parental y extensiones de navegador.",
       "tech": "Conv1D + Focal Loss, export TFLite (~1–3 MB) para inferencia on-device.",
       "status": "Open source"
+    },
+    "project5": {
+      "title": "Tese Guiada",
+      "description": "Plataforma de repertorio sociocultural y construcción de argumentos para la redacción del ENEM.",
+      "purpose": "Ayudar a estudiantes a practicar con más dirección, conectando repertorio, temas y construcción de argumentos.",
+      "status": "Visitar plataforma",
+      "imageAlt": "Logo de la plataforma Tese Guiada."
     }
   },
   "stats": {
@@ -224,8 +234,8 @@
     "bash": "bash",
     "commands": {
       "help": "Comandos disponibles:\n  help      - Muestra este mensaje\n  about     - Sobre mí\n  projects  - Mis proyectos\n  skills    - Mis habilidades\n  contact   - Información de contacto\n  clear     - Limpiar terminal",
-      "about": "Desarrolladora Backend en Mercado Libre.\nNatural de Itagimirim, Bahía, Brasil.\n3+ años construyendo sistemas escalables para millones de usuarios.\n154+ PRs creados | 121+ PR Reviews | 76 repos contribuidos.\nColaborando diariamente con equipos distribuidos por América Latina.",
-      "projects": "1. Patógenos Bioecológicos - Juego educativo (Kotlin)\n2. AntiBet Alerta - App Android contra la adicción a apuestas (Kotlin)\n3. Liv+ - App para pacientes de enfermedades crónicas reumatológicas (Kotlin) [en dev]\n\nMás allá del trabajo, uso proyectos personales para explorar nuevas tecnologías.",
+      "about": "Desarrolladora Backend en Mercado Libre.\nNatural de Itagimirim, Bahía, Brasil.\n4 años construyendo sistemas escalables para millones de usuarios.\n217 PRs creados | 295 PR Reviews | 76 repos contribuidos.\nColaborando diariamente con equipos distribuidos por América Latina.",
+      "projects": "1. Patógenos Bioecológicos - Juego educativo (Kotlin)\n2. AntiBet Alerta - App Android contra la adicción a apuestas (Kotlin)\n3. Liv+ - App para pacientes de enfermedades crónicas reumatológicas (Kotlin) [en dev]\n4. Tese Guiada - Plataforma para redacción ENEM\n\nMás allá del trabajo, uso proyectos personales para explorar nuevas tecnologías.",
       "skills": "Backend Core: Java (85%) | Kotlin (70%) | System Design (60%) | Distributed Systems (60%)\nArquitectura & Plataforma: Spring Boot (85%) | Microservices (70%) | REST APIs (90%) | Event-driven (60%)\nCalidad & Operaciones: Observabilidad (75%) | Testing (80%) | Code Review (80%) | Seguridad (60%)",
       "contact": "LinkedIn: linkedin.com/in/brendabispo\nGitHub: github.com/brendaalcantara\nEmail: brendaalcantarabba@gmail.com",
       "unknown": "Comando no reconocido. Escribe 'help' para ver los comandos disponibles."
