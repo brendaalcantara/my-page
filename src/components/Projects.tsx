@@ -4,11 +4,12 @@ import { ReactNode } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { GamepadIcon, PhoneIcon, HeartPulseIcon, BrainIcon, BookOpenIcon } from "./Icons";
+import { GamepadIcon, PhoneIcon, HeartPulseIcon, BrainIcon, BookOpenIcon, GlobeSmallIcon } from "./Icons";
 
 const ANTIBET_SITE_URL = "https://home.antibetalerta.com/";
 const ANTIBET_PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.antibet.alerta";
 const TESE_GUIADA_URL = "https://teseguiada.com.br/";
+const ONDE_VOTO_AGORA_URL = "https://ondevotoagora.com.br/";
 
 interface Tag {
   label: string;
@@ -86,6 +87,7 @@ export default function Projects() {
   const project3 = t.projects.project3;
   const project4 = t.projects.project4;
   const project5 = t.projects.project5;
+  const project6 = t.projects.project6;
 
   return (
     <section id="projects" className="py-20 relative">
@@ -313,6 +315,52 @@ export default function Projects() {
                   className="text-xs font-mono text-neon-purple hover:text-neon-blue transition-colors"
                 >
                   {project5.status} ↗
+                </a>
+              }
+            />
+          )}
+
+          {project6 && (
+            <ProjectCard
+              delay={0.5}
+              media={
+                <a
+                  href={ONDE_VOTO_AGORA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="aspect-video bg-[#173444] relative overflow-hidden block group/link flex items-center justify-center"
+                  aria-label={`${project6.title} — ${project6.status}`}
+                >
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(35,166,181,0.25),transparent_52%),radial-gradient(circle_at_80%_80%,rgba(255,190,56,0.18),transparent_45%)]" />
+                  <Image
+                    src="/images/projects/onde-voto-agora-logo.png"
+                    alt={project6.imageAlt}
+                    width={1254}
+                    height={1254}
+                    className="relative z-10 h-36 w-36 object-contain transition-transform duration-500 group-hover/link:scale-105"
+                  />
+                  <span className="absolute bottom-3 right-4 z-10 text-[10px] font-mono text-white/70">ondevotoagora.com.br ↗</span>
+                </a>
+              }
+              Icon={<GlobeSmallIcon size={22} />}
+              title={project6.title}
+              description={project6.description}
+              labelText="Purpose"
+              labelColor="blue"
+              detail={project6.purpose}
+              tags={[
+                { label: "HTML", color: "blue" },
+                { label: "CSS", color: "purple" },
+                { label: "JavaScript", color: "blue" },
+              ]}
+              action={
+                <a
+                  href={ONDE_VOTO_AGORA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-mono text-neon-blue hover:text-neon-purple transition-colors"
+                >
+                  {project6.status} ↗
                 </a>
               }
             />

@@ -194,6 +194,13 @@
       "purpose": "Ayudar a estudiantes a practicar con más dirección, conectando repertorio, temas y construcción de argumentos.",
       "status": "Visitar plataforma",
       "imageAlt": "Logo de la plataforma Tese Guiada."
+    },
+    "project6": {
+      "title": "OndeVotoAgora",
+      "description": "Consulta independiente sobre cambios en el local de votación.",
+      "purpose": "Ayudar a los votantes a comprobar si su sección electoral cambió entre la primera y la segunda vuelta, sin registro.",
+      "status": "Visitar sitio",
+      "imageAlt": "Logo de OndeVotoAgora."
     }
   },
   "stats": {
@@ -235,7 +242,7 @@
     "commands": {
       "help": "Comandos disponibles:\n  help      - Muestra este mensaje\n  about     - Sobre mí\n  projects  - Mis proyectos\n  skills    - Mis habilidades\n  contact   - Información de contacto\n  clear     - Limpiar terminal",
       "about": "Desarrolladora Backend en Mercado Libre.\nNatural de Itagimirim, Bahía, Brasil.\n4 años construyendo sistemas escalables para millones de usuarios.\n217 PRs creados | 295 PR Reviews | 76 repos contribuidos.\nColaborando diariamente con equipos distribuidos por América Latina.",
-      "projects": "1. Patógenos Bioecológicos - Juego educativo (Kotlin)\n2. AntiBet Alerta - App Android contra la adicción a apuestas (Kotlin)\n3. Liv+ - App para pacientes de enfermedades crónicas reumatológicas (Kotlin) [en dev]\n4. Tese Guiada - Plataforma para redacción ENEM\n\nMás allá del trabajo, uso proyectos personales para explorar nuevas tecnologías.",
+      "projects": "1. Patógenos Bioecológicos - Juego educativo (Kotlin)\n2. AntiBet Alerta - App Android contra la adicción a apuestas (Kotlin)\n3. Liv+ - App para pacientes de enfermedades crónicas reumatológicas (Kotlin) [en dev]\n4. Tese Guiada - Plataforma para redacción ENEM\n5. OndeVotoAgora - Consulta de cambios en el local de votación\n\nMás allá del trabajo, uso proyectos personales para explorar nuevas tecnologías.",
       "skills": "Backend Core: Java (85%) | Kotlin (70%) | System Design (60%) | Distributed Systems (60%)\nArquitectura & Plataforma: Spring Boot (85%) | Microservices (70%) | REST APIs (90%) | Event-driven (60%)\nCalidad & Operaciones: Observabilidad (75%) | Testing (80%) | Code Review (80%) | Seguridad (60%)",
       "contact": "LinkedIn: linkedin.com/in/brendabispo\nGitHub: github.com/brendaalcantara\nEmail: brendaalcantarabba@gmail.com",
       "unknown": "Comando no reconocido. Escribe 'help' para ver los comandos disponibles."
